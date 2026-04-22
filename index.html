@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hui Zhou - Portfolio</title>
+    <style>
+        /* CSS Variables for Light/Dark Mode */
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --primary: #51247a; /* UQ Purple */
+            --primary-hover: #3d1b5c;
+            --border: #e0e0e0;
+            --tab-bg: #eaeaea;
+        }
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --primary: #9b6cce;
+            --primary-hover: #b38ce6;
+            --border: #333;
+            --tab-bg: #2a2a2a;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            gap: 30px;
+            flex-direction: column;
+        }
+        @media (min-width: 768px) {
+            .container { flex-direction: row; align-items: flex-start; }
+        }
+
+        /* Sidebar / Profile */
+        .sidebar {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid var(--primary);
+        }
+        .sidebar h1 { margin: 0 0 5px; font-size: 1.8rem; }
+        .sidebar p { margin: 5px 0 15px; font-size: 1rem; opacity: 0.8; }
+        .theme-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* Main Content & Tabs */
+        .main-content {
+            flex: 2;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .tab-buttons {
+            display: flex;
+            background: var(--tab-bg);
+            overflow-x: auto; /* Scrollable on small screens */
+        }
+        .tab-buttons button {
+            flex: 1;
+            background: none;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--text-color);
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .tab-buttons button.active {
+            background: var(--card-bg);
+            border-bottom: 3px solid var(--primary);
+        }
+        .tab-buttons button:hover:not(.active) { background: rgba(0,0,0,0.05); }
+        
+        .tab-content {
+            padding: 30px;
+            display: none;
+        }
+        .tab-content.active { display: block; }
+        
+        /* Typography specifics */
+        h2 { border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-top: 0; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        .highlight-box {
+            background: var(--bg-color);
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <aside class="sidebar">
+        <img src="profile.jpg" alt="Hui Zhou" class="profile-img">
+        <h1>Hui Zhou</h1>
+        <p>Senior Data Analyst & PhD Candidate<br>Brisbane, Australia</p>
+        <p>
+            <a href="mailto:hui.zhou@uq.edu.au">hui.zhou@uq.edu.au</a><br>
+            <a href="https://www.linkedin.com/in/hui-zhou-934047146/" target="_blank">LinkedIn</a> | 
+            <a href="https://scholar.google.com.au/citations?hl=en&pli=1&user=lRs42VYAAAAJ" target="_blank">Google Scholar</a> | 
+            <a href="https://orcid.org/0000-0003-2327-8251" target="_blank">ORCID</a>
+        </p>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+    </aside>
+
+    <main class="main-content">
+        <div class="tab-buttons">
+            <button class="tab-link active" onclick="openTab(event, 'summary')">Summary</button>
+            <button class="tab-link" onclick="openTab(event, 'ai-projects')">AI Projects</button>
+            <button class="tab-link" onclick="openTab(event, 'experience')">Experience</button>
+            <button class="tab-link" onclick="openTab(event, 'education')">Education</button>
+        </div>
+
+        <div id="summary" class="tab-content active">
+            <h2>Professional Profile</h2>
+            <p>I am a Senior Data Analyst at the Institute for Teaching and Learning Innovation (ITaLI) at The University of Queensland, and a PhD Candidate in Computer Science within the School of EECS.</p>
+            <p>My professional expertise lies in system migration, cloud infrastructure management, and developing AI-driven solutions for qualitative data analysis. Most recently, I led the technical integration of the university's new Blue evaluation system. I hold an AWS Certified AI Practitioner certification, underpinning my focus on bridging complex data engineering with secure, scalable, and actionable academic quality assurance platforms.</p>
+            
+            <h2>Core Skills</h2>
+            <ul>
+                <li><strong>AI & Machine Learning:</strong> AWS Bedrock, AWS Sagemaker, PyTorch, scikit-learn, NLP, LLM Prompt Engineering</li>
+                <li><strong>Programming & Data:</strong> Python (Pandas, NumPy), Java, SQL, R, JavaScript, HTML, CSS</li>
+                <li><strong>BI & Visualization:</strong> SAP Business Objects, Power BI, Pentaho, Qlik Sense</li>
+                <li><strong>Certifications:</strong> AWS Certified AI Practitioner (2025)</li>
+            </ul>
+        </div>
+
+        <div id="ai-projects" class="tab-content">
+            <h2>AI & Machine Learning Initiatives</h2>
+            <p>Highlighting recent technical leadership in developing applied AI pipelines for academic quality assurance.</p>
+
+            <div class="highlight-box">
+                <h3>SECaT Comment Analysis & Moderation Pipeline</h3>
+                <p><strong>Role:</strong> Lead Developer & Architect | <strong>Tech Stack:</strong> Python, AWS Bedrock (Claude), Gemini, Airflow</p>
+                <ul>
+                    <li><strong>Architecture:</strong> Designed and implemented a robust NLP pipeline to process qualitative student feedback, extracting thematic insights and sentiment scores to provide actionable data for university executives.</li>
+                    <li><strong>Abusive Language Detection (HITL):</strong> Engineered a two-stage scan mechanism—combining a hardcoded dictionary approach with advanced semantic AI screening. Built a web-based Human-in-the-Loop moderation portal to allow staff to review, audit, and escalate flagged comments before final reporting.</li>
+                    <li><strong>Optimization & Reliability:</strong> Solved critical JSON parsing and token-limit errors by implementing intelligent batching strategies (processing chunks of 3,500 - 4,000 characters), ensuring high pipeline reliability while significantly reducing API latency and costs.</li>
+                    <li><strong>Deployment:</strong> Currently architecting the migration of these AI scripts and automation workflows to the UQ Data Lake utilizing Airflow for the upcoming two-phrase controlled release.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="experience" class="tab-content">
+            <h2>Professional Experience</h2>
+            
+            <h3>Senior Principal Data Analyst, AI Application</h3>
+            <p><em>ITaLI, The University of Queensland | April 2024 – Present</em></p>
+            <ul>
+                <li>Led the technical migration and integration of the legacy student evaluation system to the new Blue platform, streamlining university-wide data collection.</li>
+                <li>Developed automated data validation and reporting scripts to provide real-time insights into student experience.</li>
+            </ul>
+
+            <h3>Research Assistant</h3>
+            <p><em>UQ Business School | Sep 2022 – Apr 2024</em></p>
+            <ul>
+                <li>Executed data collection and filtering, utilizing Python for data crawling, and conducted qualitative analysis on the collected data.</li>
+            </ul>
+
+            <h3>Lead Tutor / Teaching Assistant</h3>
+            <p><em>The University of Queensland | Feb 2019 – June 2024</em></p>
+            <ul>
+                <li>Facilitated courses including Data Analytics, Information Retrieval, and Information Analysis.</li>
+                <li>Currently marking assignments and providing feedback for BISM7233 (Business Data Analytics).</li>
+                <li>Nominated for the 2024 Citations for Outstanding Contributions to Student Learning (COCSL).</li>
+            </ul>
+            
+            <h3>Previous Roles</h3>
+            <ul>
+                <li><strong>Web Developer</strong> - ITaLI, UQ (Sep 2019 – Feb 2020)</li>
+                <li><strong>Database/SQL Developer</strong> - CoralWatch Project, UQ (Apr 2019 – Sep 2020)</li>
+                <li><strong>System Analyst</strong> - Shine Lawyers (Oct 2017 – Feb 2019)</li>
+            </ul>
+        </div>
+
+        <div id="education" class="tab-content">
+            <h2>Education</h2>
+            <p><strong>PhD Candidate in Computer Science</strong><br><em>The University of Queensland | Jan 2021 - Ongoing</em><br>Thesis: The role of metadata in evaluating repurposed data.</p>
+            <p><strong>Master of Information Technology</strong><br><em>The University of Queensland | Jul 2015 – Jun 2017</em></p>
+            <p><strong>Bachelor of Science in Management</strong><br><em>Beijing International Studies University | Sep 2010 – Jul 2014</em></p>
+
+            <h2>Selected Publications</h2>
+            <ol>
+                <li><strong>Do Process Analysts Care About the Metadata of Event Logs?</strong> <em>Hui Zhou, et al.</em> ACIS 2023.</li>
+                <li><strong>A Behavioral Analysis of Metadata Use in Evaluating the Quality of Repurposed Data.</strong> <em>Hui Zhou, et al.</em> Conceptual Modeling: ER 2022.</li>
+                <li><strong>Evaluating the quality of repurposed data – The Role of Metadata.</strong> <em>Hui Zhou, et al.</em> ACIS 2021.</li>
+            </ol>
+        </div>
+    </main>
+</div>
+
+<script>
+    // Tab switching logic
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+
+    // Dark mode toggle logic
+    function toggleTheme() {
+        const body = document.documentElement;
+        if (body.getAttribute('data-theme') === 'dark') {
+            body.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+
+    // Check for saved theme preference on load
+    window.onload = function() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    }
+</script>
+
+</body>
+</html>
