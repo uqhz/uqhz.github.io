@@ -58,27 +58,12 @@
         
         /* Desktop Layout */
         @media (min-width: 900px) {
-            .container { 
-                grid-template-columns: 320px 1fr; 
-                align-items: start; 
-                margin: 40px auto;
-                gap: 30px;
-            }
-            .sidebar { 
-                position: sticky; /* Only sticky on large screens */
-                top: 40px; 
-            }
+            .container { grid-template-columns: 320px 1fr; align-items: start; margin: 40px auto; gap: 30px; }
+            .sidebar { position: sticky; top: 40px; }
         }
 
         /* Sidebar Profile */
-        .sidebar {
-            background: var(--bg-card);
-            border-radius: 24px;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
+        .sidebar { background: var(--bg-card); border-radius: 24px; padding: 30px 20px; text-align: center; box-shadow: var(--shadow); border: 1px solid var(--border); }
         .profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
         .sidebar h1 { font-size: 1.8rem; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 5px; }
         .sidebar h2 { font-size: 1rem; color: var(--text-muted); font-weight: 400; margin-bottom: 20px; }
@@ -89,29 +74,10 @@
         .theme-toggle:hover { transform: scale(1.02); }
 
         /* Main Content */
-        .main-content {
-            background: var(--bg-card);
-            border-radius: 24px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            overflow: hidden;
-            min-height: 80vh;
-        }
+        .main-content { background: var(--bg-card); border-radius: 24px; box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; min-height: 80vh; }
 
         /* Navigation */
-        .tab-bar {
-            display: flex;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            overflow-x: auto; /* Ensures tabs scroll smoothly on mobile */
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
-        }
+        .tab-bar { display: flex; background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
         .tab-bar::-webkit-scrollbar { display: none; }
         .tab-btn { flex: 1; background: none; border: none; padding: 15px; font-size: 0.95rem; font-weight: 500; color: var(--text-muted); cursor: pointer; white-space: nowrap; transition: color 0.3s; border-bottom: 2px solid transparent; }
         .tab-btn:hover { color: var(--text-main); background: rgba(0,0,0,0.02); }
@@ -131,12 +97,12 @@
         .pill-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; margin-bottom: 30px; }
         .pill { background: var(--accent-bg); color: var(--accent); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
 
-        /* Feature Cards (AI Projects) */
+        /* Feature Cards */
         .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-        .feature-card { background: var(--bg-base); border: 1px solid var(--border); border-radius: 18px; padding: 20px; transition: transform 0.3s; display: flex; flex-direction: column; }
+        .feature-card { background: var(--bg-base); border: 1px solid var(--border); border-radius: 18px; padding: 25px; transition: transform 0.3s; display: flex; flex-direction: column; }
         .feature-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
         .feature-card h4 { margin-top: 0; color: var(--text-main); font-size: 1.1rem; margin-bottom: 8px;}
-        .btn-modal { margin-top: auto; align-self: flex-start; background: var(--text-main); color: var(--bg-base); border: none; padding: 8px 16px; border-radius: 16px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s; margin-top: 15px;}
+        .btn-modal { margin-top: auto; align-self: flex-start; background: var(--accent); color: white; border: none; padding: 10px 18px; border-radius: 16px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s; margin-top: 15px;}
         .btn-modal:hover { opacity: 0.8; }
 
         /* Quotes */
@@ -144,6 +110,13 @@
         .quote-card { background: var(--bg-base); padding: 25px; border-radius: 18px; border-left: 4px solid var(--accent); position: relative; }
         .quote-card p { font-style: italic; color: var(--text-main) !important; position: relative; z-index: 1; }
         .quote-author { font-size: 0.85rem; font-weight: 600; color: var(--accent); margin-top: 10px; display: block; }
+
+        /* Awards Grid */
+        .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 20px; }
+        .award-card { background: var(--bg-base); border: 1px solid var(--border); border-radius: 18px; padding: 25px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .award-img { max-width: 120px; height: auto; margin-bottom: 15px; }
+        .award-card h4 { margin: 0 0 10px 0; font-size: 1.1rem; color: var(--text-main); }
+        .award-card p { font-size: 0.9rem !important; margin: 0 !important; color: var(--text-muted); }
 
         /* Timeline */
         .timeline { border-left: 2px solid var(--border); margin-left: 10px; padding-left: 25px; position: relative; }
@@ -155,15 +128,25 @@
         /* Mobile-Responsive Modals (Popups) */
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 100; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s; padding: 15px; }
         .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content { background: var(--bg-card); width: 100%; max-width: 700px; border-radius: 20px; padding: 30px 20px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: translateY(20px); transition: transform 0.3s; max-height: 90vh; overflow-y: auto; }
+        .modal-content { background: var(--bg-card); width: 100%; max-width: 750px; border-radius: 20px; padding: 30px 20px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: translateY(20px); transition: transform 0.3s; max-height: 90vh; overflow-y: auto; }
         @media (min-width: 768px) { .modal-content { padding: 40px; } }
         .modal-overlay.active .modal-content { transform: translateY(0); }
         .modal-close { position: absolute; top: 15px; right: 15px; background: var(--bg-base); border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; color: var(--text-main); display: flex; align-items: center; justify-content: center;}
         
-        /* Modal UI Mockups */
-        .mockup-container { background: var(--bg-base); border-radius: 12px; padding: 15px; border: 1px solid var(--border); font-family: monospace; font-size: 0.85rem; margin-top: 15px; color: var(--text-main); overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;}
-        .mockup-arrow { text-align: center; font-size: 1.5rem; color: var(--accent); margin: 10px 0; }
-        .stat-row { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding: 8px 0; }
+        /* PPT-Style Presentation Graphics */
+        .ppt-graphic { background: var(--bg-base); border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin: 20px 0; text-align: center; }
+        .ppt-title { font-size: 1.2rem; font-weight: 600; color: var(--text-main); margin-bottom: 15px; }
+        
+        /* Workflow Arrows */
+        .workflow-step { display: inline-block; padding: 10px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; font-weight: 600; color: var(--text-main); margin: 5px; }
+        .workflow-arrow { display: inline-block; color: var(--accent); font-size: 1.5rem; margin: 0 10px; vertical-align: middle; }
+        
+        /* Bar Chart */
+        .bar-chart-container { text-align: left; margin-top: 20px; }
+        .bar-label { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 5px; font-weight: 600;}
+        .bar-track { width: 100%; background: rgba(0,0,0,0.05); border-radius: 10px; height: 12px; margin-bottom: 15px; overflow: hidden; }
+        .bar-fill-dict { width: 45%; background: var(--text-muted); height: 100%; border-radius: 10px; }
+        .bar-fill-ai { width: 100%; background: var(--accent); height: 100%; border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -187,9 +170,10 @@
     <main class="main-content">
         <nav class="tab-bar">
             <button class="tab-btn active" onclick="openTab(event, 'summary')">Overview</button>
-            <button class="tab-btn" onclick="openTab(event, 'projects')">AI Architecture</button>
+            <button class="tab-btn" onclick="openTab(event, 'projects')">AI Innovations</button>
             <button class="tab-btn" onclick="openTab(event, 'experience')">Experience</button>
             <button class="tab-btn" onclick="openTab(event, 'teaching')">Teaching</button>
+            <button class="tab-btn" onclick="openTab(event, 'awards')">Awards</button>
             <button class="tab-btn" onclick="openTab(event, 'pubs')">Publications</button>
         </nav>
 
@@ -197,14 +181,14 @@
             <h3>Executive Summary</h3>
             <p>I am a Senior Principal Data Analyst at the Institute for Teaching and Learning Innovation (ITaLI) at The University of Queensland, and a PhD Candidate in Data Science.</p>
             <p>My professional strength lies in architecting large-scale data systems and deploying production-ready AI. I recently led the technical integration of UQ's new "Blue" evaluation system. I specialize in designing highly optimized NLP data pipelines, leveraging AWS Bedrock (Claude 3), automated S3 chunking, and intelligent ETL processes to extract actionable intelligence from hundreds of thousands of unstructured academic records.</p>
-            <p>I bridge the gap between complex cloud infrastructure and strategic institutional governance, holding an AWS Certified AI Practitioner certification and a deep academic background in data quality management.</p>
+            <p>I bridge the gap between complex cloud infrastructure and strategic institutional governance, translating technical capabilities into tangible business outcomes that protect staff wellbeing and enhance teaching quality.</p>
 
             <h3 style="margin-top: 35px;">Technical Infrastructure & AI</h3>
             <div class="pill-container">
                 <span class="pill">AWS Bedrock & Sagemaker</span>
                 <span class="pill">AWS S3 & Batch Processing</span>
-                <span class="pill">Generative AI / LLM Orchestration</span>
-                <span class="pill">Python (Pandas, NumPy, PyTorch)</span>
+                <span class="pill">Generative AI / LLMs</span>
+                <span class="pill">Python (Pandas, NumPy)</span>
                 <span class="pill">NLP & Semantic Analysis</span>
             </div>
 
@@ -213,32 +197,31 @@
                 <span class="pill">SQL & PostgreSQL</span>
                 <span class="pill">Power BI & SAP Business Objects</span>
                 <span class="pill">ETL & Data Normalization</span>
-                <span class="pill">JavaScript / HTML / PHP</span>
                 <span class="pill">BPMN & Conceptual Modelling</span>
             </div>
         </section>
 
         <section id="projects" class="tab-content">
-            <h3>Enterprise AI & Data Engineering</h3>
-            <p>Interactive metrics and architecture flows showcasing my recent development of UQ's academic quality assurance pipelines.</p>
+            <h3>AI Innovation & Strategic Impact</h3>
+            <p>Exploring the business value and institutional impact of the AI-enhanced moderation workflows I developed for UQ's academic quality assurance.</p>
 
             <div class="card-grid">
                 <div class="feature-card">
-                    <h4>Dual-Layer NLP Moderation</h4>
-                    <p>Designed a robust engine combining hardcoded dictionary rules with semantic AI (Claude 3 Haiku) to detect passive-aggressive and abusive language in student feedback.</p>
-                    <button class="btn-modal" onclick="openModal('modal-abusive')">View Real Metrics</button>
+                    <h4>The Duty of Care: Protecting Staff</h4>
+                    <p>Why it matters: Replacing legacy keyword systems with AI to successfully detect hidden, nuanced abuse in student feedback.</p>
+                    <button class="btn-modal" onclick="openModal('modal-protect')">View Business Impact</button>
                 </div>
 
                 <div class="feature-card">
-                    <h4>AWS Bedrock Batch Architecture</h4>
-                    <p>Engineered a large-scale data processing pipeline that normalizes data, chunks it into JSONL, and orchestrates asynchronous AWS Bedrock processing to prevent token limits.</p>
-                    <button class="btn-modal" onclick="openModal('modal-batching')">View Pipeline Flow</button>
+                    <h4>Scalability: The 348k Challenge</h4>
+                    <p>Why it matters: Manual review creates psychological burdens. Learn how we built a faster, fairer Human-in-the-Loop workflow.</p>
+                    <button class="btn-modal" onclick="openModal('modal-scale')">View Workflow Design</button>
                 </div>
 
                 <div class="feature-card">
-                    <h4>Dashboard Data ETL Engine</h4>
-                    <p>Developed a high-efficiency multi-semester ETL script that explodes nested AI themes into optimized, static JSON files for rapid frontend rendering.</p>
-                    <button class="btn-modal" onclick="openModal('modal-etl')">View Data Transformation</button>
+                    <h4>Actionable Institutional Insights</h4>
+                    <p>Why it matters: Unstructured qualitative data is difficult for executives to use. Learn how AI transforms feedback into strategy.</p>
+                    <button class="btn-modal" onclick="openModal('modal-insights')">View Strategic Dashboard</button>
                 </div>
             </div>
         </section>
@@ -281,10 +264,7 @@
                     <span class="timeline-date">Jan 2021 – Ongoing</span>
                     <h4>PhD Candidate in Data Science</h4>
                     <p><em>School of EECS, The University of Queensland</em></p>
-                    <ul>
-                        <li><strong>Thesis:</strong> The role of metadata in evaluating repurposed data.</li>
-                        <li><strong>Awards:</strong> Australian Government Research Training Program (RTP) Full Scholarship.</li>
-                    </ul>
+                    <ul><li><strong>Thesis:</strong> The role of metadata in evaluating repurposed data.</li></ul>
                 </div>
                 <div class="timeline-item">
                     <span class="timeline-date">Jul 2015 – Jun 2017</span>
@@ -295,22 +275,26 @@
         </section>
 
         <section id="teaching" class="tab-content">
-            <h3>Teaching & Mentorship</h3>
+            <h3>Teaching Philosophy</h3>
             <p>I champion a student-centered pedagogy designed to overcome the "expert blind spot." By bridging complex data engineering theory with practical, real-world analogies, I empower diverse learners to succeed.</p>
             <ul>
-                <li><strong>Guest Lecturer (BISM7233):</strong> Delivered specialized lectures on Business Data Analytics to bridge theoretical models with industry applications.</li>
-                <li><strong>Lead Tutor (2019-2024):</strong> Facilitated BISM7233, BISM7206, BISM2207, and INFS1200 across Business and EECS schools.</li>
+                <li><strong>Bridging Theory and Practice:</strong> Using relatable real-world analogies (e.g., explaining database relationships to finance students using a ledger).</li>
+                <li><strong>Inclusive Adaptation:</strong> Utilizing collaborative online documents to ensure introverted or resource-limited students thrive.</li>
             </ul>
-            
-            <div style="background: var(--accent-bg); padding: 15px; border-radius: 12px; margin: 20px 0; border: 1px solid rgba(0, 113, 227, 0.2);">
-                <strong>🏆 Award Nomination:</strong> Invited to submit full application for the <em>Citations for Outstanding Contributions to Student Learning (COCSL)</em> teaching award (2024).
-            </div>
 
             <h3 style="margin-top: 30px;">Student & Peer Endorsements</h3>
             <div class="quote-grid">
                 <div class="quote-card">
                     <p>"Hui is always kindly and slowly teaching the content for us, teaching us step by step for understanding how to operate the software. Best tutor!"</p>
+                    <span class="quote-author">— Student Feedback (SETutor 2022)</span>
+                </div>
+                <div class="quote-card">
+                    <p>"There is a lot of interaction in class and extra time to search before discussion. This teacher is the best. Really did his best to engage in the class."</p>
                     <span class="quote-author">— Student Feedback (SETutor 2023)</span>
+                </div>
+                <div class="quote-card">
+                    <p>"His ability to translate complex data analytics concepts into understandable insights was particularly beneficial. It was Hui's inspiring teaching style that influenced my decision to pursue a tutor position."</p>
+                    <span class="quote-author">— Former Student Email</span>
                 </div>
                 <div class="quote-card">
                     <p>"Demonstrated natural leadership qualities, mentoring new tutors, sharing best practices, contributing to a cohesive team dynamic, having a tangible impact on student success."</p>
@@ -319,9 +303,39 @@
             </div>
         </section>
 
+        <section id="awards" class="tab-content">
+            <h3>Awards & Certifications</h3>
+            <p>Recognitions for excellence in technical innovation, academic research, and teaching performance.</p>
+
+            <div class="awards-grid">
+                <div class="award-card">
+                    <img src="aws-badge.png" alt="AWS Certified AI Practitioner" class="award-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cG9seWdvbiBwb2ludHM9IjUwLDUgOTUsMjUgOTUsNzUgNTAsOTUgNSw3NSA1LDI1IiBmaWxsPSIjMjMyRjNFIi8+PHRleHQgeD0iNTAiIHk9IjUwIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFXUyBBSTwvdGV4dD48dGV4dCB4PSI1MCIgeT0iNjUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QcmFjdGl0aW9uZXI8L3RleHQ+PC9zdmc+'">
+                    <h4>AWS Certified AI Practitioner</h4>
+                    <p>AI/Gen-AI, Machine Learning (2025)</p>
+                </div>
+                
+                <div class="award-card">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">🎓</div>
+                    <h4>RTP Full Scholarship</h4>
+                    <p>Australian Government Research Training Program (PhD)</p>
+                </div>
+
+                <div class="award-card">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">🌟</div>
+                    <h4>ITaLI Individual Award</h4>
+                    <p>Commendation for excellence in performance and positive contributions to culture</p>
+                </div>
+
+                <div class="award-card">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">🏆</div>
+                    <h4>COCSL Teaching Award</h4>
+                    <p>Passed EOI, invited for full application for Outstanding Contributions to Student Learning (2024)</p>
+                </div>
+            </div>
+        </section>
+
         <section id="pubs" class="tab-content">
             <h3>Academic Publications</h3>
-            <p style="margin-bottom: 20px;">Click on the titles below to view the published proceedings.</p>
             <ul>
                 <li><a href="https://aisel.aisnet.org/acis2021/50/" target="_blank">Evaluating the quality of repurposed data – The Role of Metadata</a><br><em>Hui Zhou, Gianluca Demartini, Marta Indulska, and Shazia Sadiq.</em> ACIS 2021 Proceedings.</li>
                 <li style="margin-top: 15px;"><a href="https://link.springer.com/chapter/10.1007/978-3-031-17995-2_22" target="_blank">A Behavioral Analysis of Metadata Use in Evaluating the Quality of Repurposed Data</a><br><em>Hui Zhou, Han Lei, Gianluca Demartini, Marta Indulska, and Shazia Sadiq.</em> Conceptual Modeling: ER 2022.</li>
@@ -335,72 +349,80 @@
     </main>
 </div>
 
-<div class="modal-overlay" id="modal-abusive" onclick="closeModal(event, 'modal-abusive')">
+<div class="modal-overlay" id="modal-protect" onclick="closeModal(event, 'modal-protect')">
     <div class="modal-content">
-        <button class="modal-close" onclick="forceClose('modal-abusive')">&times;</button>
-        <h3>Dual-Layer NLP Moderation Engine</h3>
-        <p>Combining deterministic dictionary scanning with semantic AI to ensure a safe reporting environment.</p>
+        <button class="modal-close" onclick="forceClose('modal-protect')">&times;</button>
+        <h3>The Duty of Care: Protecting Staff Wellbeing</h3>
         
-        <div class="mockup-container">
-            <strong>[Production Run Metrics]</strong>
-            <div class="stat-row"><span>Total Qualitative Comments Processed:</span> <strong>116,737</strong></div>
-            <div class="stat-row"><span>1. Flagged by Dictionary rules:</span> <strong>7,012 (6.01%)</strong></div>
-            <div class="stat-row" style="color: var(--accent);"><span>2. Unique Flags caught ONLY by AI:</span> <strong>664 (0.57%)</strong></div>
+        <div class="ppt-graphic">
+            <div class="ppt-title">The Problem with Legacy Systems</div>
+            <p style="margin-bottom: 20px;">Institutions rely on student feedback, but legacy keyword dictionaries are critically inaccurate against modern linguistic complexities. They miss passive-aggressive, discriminatory, and nuanced abuse, exposing academic staff to psychological harm.</p>
             
-            <br>
-            <strong>[Engineering Impact]</strong><br>
-            The 664 unique AI flags demonstrate the critical value of semantic screening. While dictionaries catch explicit profanity, the Claude 3 Haiku model successfully identified nuanced, passive-aggressive hostility and contextual abuse that hardcoded rules completely missed.
+            <div class="ppt-title" style="margin-top: 30px;">The AI Hybrid Solution</div>
+            <p>By implementing a Large Language Model (LLM) alongside traditional scanning, we successfully identify the threats that hardcoded rules miss.</p>
+            
+            <div class="bar-chart-container">
+                <div class="bar-label"><span>Traditional Keyword Dictionary Catch Rate</span> <span>Limited</span></div>
+                <div class="bar-track"><div class="bar-fill-dict"></div></div>
+                
+                <div class="bar-label"><span style="color: var(--accent);">AI Semantic Scanning Catch Rate</span> <span style="color: var(--accent);">Comprehensive</span></div>
+                <div class="bar-track"><div class="bar-fill-ai"></div></div>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">*The AI analysis identified numerous instances of severe, nuanced abuse that the dictionary-only method completely missed, closing a significant gap in institutional risk management.</p>
         </div>
     </div>
 </div>
 
-<div class="modal-overlay" id="modal-batching" onclick="closeModal(event, 'modal-batching')">
+<div class="modal-overlay" id="modal-scale" onclick="closeModal(event, 'modal-scale')">
     <div class="modal-content">
-        <button class="modal-close" onclick="forceClose('modal-batching')">&times;</button>
-        <h3>AWS Bedrock Batch Architecture</h3>
-        <p>A highly robust pipeline designed to process massive datasets while bypassing API rate limits and JSON truncation errors.</p>
+        <button class="modal-close" onclick="forceClose('modal-scale')">&times;</button>
+        <h3>Scalability: Managing 348,000+ Comments</h3>
         
-        <div class="mockup-container">
-            <strong>[Pipeline Architecture Flow]</strong><br><br>
-            [1] Normalized Excel Dataset<br>
-            &nbsp;↓<br>
-            [2] Data Chunking & Aggregation (Max 3,500 - 4,000 chars to prevent token overflow)<br>
-            &nbsp;↓<br>
-            [3] Format to strict .jsonl payload & Upload to AWS S3<br>
-            &nbsp;↓<br>
-            [4] Trigger AWS Bedrock Asynchronous Batch Job (anthropic.claude-3-haiku)<br>
-            &nbsp;↓<br>
-            [5] Auto-Download, Parse JSON responses, and execute On-Demand Retries for any failures<br>
-            &nbsp;↓<br>
-            [6] Merge DataFrames for final Dashboard delivery
+        <div class="ppt-graphic">
+            <div class="ppt-title">A Faster, Fairer, and More Insightful Process</div>
+            <p style="margin-bottom: 25px;">Processing hundreds of thousands of records manually imposes an unsustainable psychological burden on review staff. Our scalable architecture automates the heavy lifting.</p>
+            
+            <div>
+                <span class="workflow-step">Raw Student<br>Feedback Data</span>
+                <span class="workflow-arrow">→</span>
+                <span class="workflow-step" style="border-color: var(--accent); color: var(--accent);">Dual-Scan AI<br>Moderation Engine</span>
+                <span class="workflow-arrow">→</span>
+                <span class="workflow-step" style="background: rgba(255, 149, 0, 0.1);">Human-in-the-Loop<br>Manual Review</span>
+                <span class="workflow-arrow">→</span>
+                <span class="workflow-step" style="background: rgba(52, 199, 89, 0.1);">Safe & Ethical<br>Reporting</span>
+            </div>
+            
+            <p style="margin-top: 30px; font-weight: 600;">The Result:</p>
+            <p>A highly efficient Human-in-the-Loop (HITL) system where administrative staff only need to review pre-flagged anomalies, drastically reducing their exposure to harmful content while maintaining ethical oversight.</p>
         </div>
     </div>
 </div>
 
-<div class="modal-overlay" id="modal-etl" onclick="closeModal(event, 'modal-etl')">
+<div class="modal-overlay" id="modal-insights" onclick="closeModal(event, 'modal-insights')">
     <div class="modal-content">
-        <button class="modal-close" onclick="forceClose('modal-etl')">&times;</button>
-        <h3>Dashboard Data ETL Engine (Phase 3)</h3>
-        <p>Transforming complex, nested AI output into highly efficient, static JSON files for rapid web rendering.</p>
+        <button class="modal-close" onclick="forceClose('modal-insights')">&times;</button>
+        <h3>Transforming Feedback into Strategic Insights</h3>
         
-        <div class="mockup-container">
-            <strong>[Before: Raw AI Output (Pickle Object)]</strong><br>
-            Row 1: { <br>
-            &nbsp;&nbsp;"Comment": "Great course, bad room.", <br>
-            &nbsp;&nbsp;"Themes": [{"category": "Teaching", "score": 1}, {"category": "Facilities", "score": -1}] <br>
-            }
-        </div>
-        <div class="mockup-arrow">↓ Explode() & Normalize ↓</div>
-        <div class="mockup-container" style="background: rgba(0, 113, 227, 0.05); border-color: var(--accent);">
-            <strong>[After: Static Directory Routing]</strong><br>
-            Files generated for zero-latency dashboard consumption:<br>
-            📁 dashboard_data/<br>
-            &nbsp; 📄 summary-stats_2026.json<br>
-            &nbsp; 📁 courses/4250/<br>
-            &nbsp; &nbsp; 📄 BISM7233_insights.json<br>
-            &nbsp; &nbsp; 📄 INFS1200_insights.json<br>
-            &nbsp; 📁 schools/<br>
-            &nbsp; &nbsp; 📄 EECS_aggregated.json
+        <div class="ppt-graphic">
+            <div class="ppt-title">From Unstructured Text to Executive Intelligence</div>
+            <p style="margin-bottom: 20px;">Raw qualitative comments are difficult to analyze at an institutional level. Our automated ETL (Extract, Transform, Load) pipelines categorize thousands of comments by Theme, Sentiment, and Faculty.</p>
+            
+            <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
+                <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 15px; border-radius: 12px; width: 140px;">
+                    <div style="font-size: 2rem; color: var(--accent); font-weight: bold;">84%</div>
+                    <div style="font-size: 0.85rem;">Positive Sentiment<br>in Teaching</div>
+                </div>
+                <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 15px; border-radius: 12px; width: 140px;">
+                    <div style="font-size: 2rem; color: var(--warning); font-weight: bold;">12%</div>
+                    <div style="font-size: 0.85rem;">Concerns regarding<br>Course Structure</div>
+                </div>
+                <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 15px; border-radius: 12px; width: 140px;">
+                    <div style="font-size: 2rem; color: var(--success); font-weight: bold;">↑</div>
+                    <div style="font-size: 0.85rem;">Improved Faculty<br>Engagement</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px; font-size: 0.9rem; color: var(--text-muted);">*Data rendered into static, zero-latency dashboards utilized by University Executives to inform teaching improvements and institutional accountability.</p>
         </div>
     </div>
 </div>
@@ -417,15 +439,14 @@
     // Modal Logic
     function openModal(id) {
         document.getElementById(id).classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevents background scrolling on mobile
+        document.body.style.overflow = 'hidden'; 
     }
     function closeModal(event, id) {
-        // Closes only if the user clicks the dark overlay, not the content box
         if(event.target.id === id) { forceClose(id); }
     }
     function forceClose(id) {
         document.getElementById(id).classList.remove('active');
-        document.body.style.overflow = 'auto'; // Restores scrolling
+        document.body.style.overflow = 'auto'; 
     }
 
     // Theme Logic
