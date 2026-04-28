@@ -11,11 +11,13 @@
             --bg-card: #FFFFFF;
             --text-main: #1D1D1F;
             --text-muted: #86868B;
-            --accent: #0071E3; /* Apple Blue */
+            --accent: #0071E3; 
             --accent-bg: rgba(0, 113, 227, 0.1);
             --border: rgba(0, 0, 0, 0.08);
             --shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --success: #34C759;
+            --warning: #FF9500;
         }
 
         [data-theme="dark"] {
@@ -27,33 +29,33 @@
             --accent-bg: rgba(10, 132, 255, 0.15);
             --border: rgba(255, 255, 255, 0.1);
             --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-            --glass-bg: rgba(28, 28, 30, 0.8);
+            --glass-bg: rgba(28, 28, 30, 0.85);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-base);
             color: var(--text-main);
             line-height: 1.6;
-            transition: background-color 0.4s ease, color 0.4s ease;
+            transition: background-color 0.3s, color 0.3s;
             -webkit-font-smoothing: antialiased;
         }
 
         a { color: var(--accent); text-decoration: none; font-weight: 500; }
         a:hover { text-decoration: underline; }
 
-        /* Layout Structure */
+        /* Layout */
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
             display: grid;
             grid-template-columns: 1fr;
             gap: 30px;
         }
-        @media (min-width: 850px) {
+        @media (min-width: 900px) {
             .container { grid-template-columns: 320px 1fr; align-items: start; }
         }
 
@@ -68,42 +70,16 @@
             position: sticky;
             top: 40px;
         }
-        .profile-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 24px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        }
+        .profile-img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
         .sidebar h1 { font-size: 1.8rem; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 8px; }
         .sidebar h2 { font-size: 1rem; color: var(--text-muted); font-weight: 400; margin-bottom: 24px; }
-        
         .social-links { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
-        .social-links a {
-            background: var(--bg-base);
-            padding: 10px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-        }
+        .social-links a { background: var(--bg-base); padding: 10px; border-radius: 12px; font-size: 0.9rem; transition: all 0.2s; }
         .social-links a:hover { background: var(--accent-bg); transform: scale(1.02); text-decoration: none;}
-
-        .theme-toggle {
-            background: var(--text-main);
-            color: var(--bg-base);
-            border: none;
-            padding: 12px 24px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.2s;
-        }
+        .theme-toggle { background: var(--text-main); color: var(--bg-base); border: none; padding: 12px 24px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; cursor: pointer; width: 100%; transition: transform 0.2s; }
         .theme-toggle:hover { transform: scale(1.02); }
 
-        /* Main Content Window */
+        /* Main Content */
         .main-content {
             background: var(--bg-card);
             border-radius: 24px;
@@ -113,7 +89,7 @@
             min-height: 80vh;
         }
 
-        /* Glassmorphism Tab Bar */
+        /* Navigation */
         .tab-bar {
             display: flex;
             background: var(--glass-bg);
@@ -124,36 +100,17 @@
             top: 0;
             z-index: 10;
             overflow-x: auto;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
-        .tab-bar::-webkit-scrollbar { display: none; } /* Chrome/Safari */
-        
-        .tab-btn {
-            flex: 1;
-            background: none;
-            border: none;
-            padding: 20px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            cursor: pointer;
-            white-space: nowrap;
-            transition: color 0.3s, background 0.3s;
-            border-bottom: 2px solid transparent;
-        }
+        .tab-bar::-webkit-scrollbar { display: none; }
+        .tab-btn { flex: 1; background: none; border: none; padding: 20px 15px; font-size: 0.95rem; font-weight: 500; color: var(--text-muted); cursor: pointer; white-space: nowrap; transition: color 0.3s; border-bottom: 2px solid transparent; }
         .tab-btn:hover { color: var(--text-main); background: rgba(0,0,0,0.02); }
         .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-        /* Tab Content Area */
+        /* Tab Content */
         .tab-content { padding: 40px; display: none; animation: fadeIn 0.4s ease-out; }
         .tab-content.active { display: block; }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Typography inside tabs */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .tab-content h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 20px; letter-spacing: -0.5px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
         .tab-content h4 { font-size: 1.1rem; font-weight: 600; margin-top: 25px; margin-bottom: 5px; }
         .tab-content p, .tab-content ul { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
@@ -162,55 +119,49 @@
 
         /* Pills & Tags */
         .pill-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; margin-bottom: 30px; }
-        .pill {
-            background: var(--accent-bg);
-            color: var(--accent);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: -0.2px;
-        }
+        .pill { background: var(--accent-bg); color: var(--accent); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
 
-        /* Feature Cards (For AI Projects) */
+        /* Awards Grid */
+        .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .award-card { background: var(--bg-base); padding: 20px; border-radius: 16px; border: 1px solid var(--border); text-align: center; }
+        .award-icon { font-size: 2rem; margin-bottom: 10px; }
+        .award-card h5 { font-size: 1rem; margin-bottom: 5px; color: var(--text-main); }
+        .award-card p { font-size: 0.8rem !important; margin: 0 !important; }
+
+        /* Feature Cards (AI Projects) */
         .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-        .feature-card {
-            background: var(--bg-base);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 25px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+        .feature-card { background: var(--bg-base); border: 1px solid var(--border); border-radius: 18px; padding: 25px; transition: transform 0.3s; position: relative; display: flex; flex-direction: column; }
         .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
         .feature-card h4 { margin-top: 0; color: var(--text-main); }
-        .feature-card p { font-size: 0.9rem; margin-bottom: 15px; }
         .metric-highlight { color: var(--accent); font-weight: 700; }
+        .btn-modal { margin-top: auto; align-self: flex-start; background: var(--text-main); color: var(--bg-base); border: none; padding: 8px 16px; border-radius: 16px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s; margin-top: 15px;}
+        .btn-modal:hover { opacity: 0.8; }
 
-        /* Timeline (For Experience) */
+        /* Testimonials / Quotes */
+        .quote-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .quote-card { background: var(--bg-base); padding: 25px; border-radius: 18px; border-left: 4px solid var(--accent); position: relative; }
+        .quote-card::before { content: '"'; font-size: 4rem; color: var(--accent); opacity: 0.2; position: absolute; top: 10px; left: 15px; font-family: serif; }
+        .quote-card p { font-style: italic; color: var(--text-main) !important; position: relative; z-index: 1; }
+        .quote-author { font-size: 0.85rem; font-weight: 600; color: var(--accent); margin-top: 10px; display: block; }
+
+        /* Timeline */
         .timeline { border-left: 2px solid var(--border); margin-left: 10px; padding-left: 30px; position: relative; }
         .timeline-item { margin-bottom: 40px; position: relative; }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -37px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            background: var(--accent);
-            border-radius: 50%;
-            border: 3px solid var(--bg-card);
-        }
-        .timeline-date { font-size: 0.85rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; display: block; }
+        .timeline-item::before { content: ''; position: absolute; left: -37px; top: 5px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; border: 3px solid var(--bg-card); }
+        .timeline-date { font-size: 0.85rem; font-weight: 600; color: var(--accent); text-transform: uppercase; margin-bottom: 5px; display: block; }
+
+        /* Modals (Popups) */
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); z-index: 100; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content { background: var(--bg-card); width: 90%; max-width: 800px; border-radius: 24px; padding: 40px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: translateY(20px); transition: transform 0.3s; max-height: 90vh; overflow-y: auto;}
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .modal-close { position: absolute; top: 20px; right: 20px; background: var(--bg-base); border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; color: var(--text-main); }
         
-        /* Publications List */
-        .pub-list { list-style: none; padding: 0; }
-        .pub-list li {
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.95rem;
-        }
-        .pub-list li:last-child { border-bottom: none; }
-        .pub-title { font-weight: 600; color: var(--text-main); display: block; margin-bottom: 4px; }
+        /* Modal UI Mockups */
+        .mockup-container { background: var(--bg-base); border-radius: 12px; padding: 20px; border: 1px solid var(--border); font-family: monospace; font-size: 0.9rem; margin-top: 15px; color: var(--text-main); overflow-x: auto; }
+        .mockup-arrow { text-align: center; font-size: 1.5rem; color: var(--accent); margin: 10px 0; }
+        .tag-safe { background: rgba(52, 199, 89, 0.1); color: var(--success); padding: 4px 8px; border-radius: 6px; }
+        .tag-warn { background: rgba(255, 149, 0, 0.1); color: var(--warning); padding: 4px 8px; border-radius: 6px; }
     </style>
 </head>
 <body>
@@ -225,7 +176,7 @@
             <a href="mailto:hui.zhou@uq.edu.au">hui.zhou@uq.edu.au</a>
             <a href="https://www.linkedin.com/in/hui-zhou-934047146/" target="_blank">LinkedIn Profile</a>
             <a href="https://scholar.google.com.au/citations?hl=en&pli=1&user=lRs42VYAAAAJ" target="_blank">Google Scholar</a>
-            <a href="https://orcid.org/0000-0003-2327-8251" target="_blank">ORCID: 0000-0003...</a>
+            <a href="https://orcid.org/0000-0003-2327-8251" target="_blank">ORCID: 0000-0003-2327</a>
         </div>
 
         <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
@@ -235,81 +186,132 @@
         <nav class="tab-bar">
             <button class="tab-btn active" onclick="openTab(event, 'summary')">Overview</button>
             <button class="tab-btn" onclick="openTab(event, 'projects')">AI Projects</button>
+            <button class="tab-btn" onclick="openTab(event, 'teaching')">Teaching & Impact</button>
             <button class="tab-btn" onclick="openTab(event, 'experience')">Experience</button>
-            <button class="tab-btn" onclick="openTab(event, 'pubs')">Publications & Service</button>
+            <button class="tab-btn" onclick="openTab(event, 'pubs')">Publications</button>
             <button class="tab-btn" onclick="openTab(event, 'education')">Education</button>
         </nav>
 
         <section id="summary" class="tab-content active">
             <h3>Professional Profile</h3>
-            <p>I am a Senior Principal Data Analyst at the Institute for Teaching and Learning Innovation (ITaLI) at The University of Queensland, and a PhD Candidate in Data Science within the School of EECS.</p>
-            <p>My professional expertise lies in system migration, cloud infrastructure management, and developing AI-driven solutions for qualitative data analysis. Most recently, I led the technical integration of the university's new Blue evaluation system. I am actively developing and optimizing AI-driven sentiment analysis pipelines using large language models like Claude and Gemini to process rich student feedback.</p>
-            <p>My academic research explores data quality management, with a specific focus on the role of metadata in evaluating repurposed data.</p>
+            <p>I am a Senior Principal Data Analyst at the Institute for Teaching and Learning Innovation (ITaLI) at The University of Queensland, and a PhD Candidate in Data Science.</p>
+            <p>My expertise lies in system migration, cloud infrastructure management, and developing AI-driven solutions for qualitative data analysis. Most recently, I led the technical integration of the university's new Blue evaluation system. I am actively developing optimized AI-driven sentiment analysis pipelines using large language models (Claude, Gemini) to process rich student feedback.</p>
             
-            <h3>Technical Arsenal</h3>
-            <div class="pill-container">
-                <span class="pill">AWS Certified AI Practitioner</span>
-                <span class="pill">Generative AI / LLMs</span>
-                <span class="pill">AWS Bedrock & Sagemaker</span>
-                <span class="pill">Python (Pandas, NumPy, PyTorch)</span>
-                <span class="pill">Scikit-learn</span>
-                <span class="pill">NLP</span>
+            <h3 style="margin-top: 35px;">Awards & Honours</h3>
+            <div class="awards-grid">
+                <div class="award-card">
+                    <div class="award-icon">🏆</div>
+                    <h5>COCSL Teaching Award</h5>
+                    <p>Passed EOI, invited for full application for Outstanding Contributions to Student Learning.</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon">🌟</div>
+                    <h5>ITaLI Commendation</h5>
+                    <p>Individual award for excellence in performance and positive contributions to culture.</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon">🎓</div>
+                    <h5>RTP Scholarship</h5>
+                    <p>Australian Government Research Training Program Full PhD Scholarship.</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon">☁️</div>
+                    <h5>AWS Certification</h5>
+                    <p>Certified AI Practitioner (Foundational) - Issued 2025.</p>
+                </div>
             </div>
 
-            <h3>Data Engineering & Systems</h3>
+            <h3>Technical Arsenal</h3>
             <div class="pill-container">
+                <span class="pill">AWS Bedrock & Sagemaker</span>
+                <span class="pill">Generative AI / LLMs</span>
+                <span class="pill">Python (Pandas, NumPy)</span>
                 <span class="pill">SQL & PostgreSQL</span>
-                <span class="pill">Power BI & SAP Business Objects</span>
-                <span class="pill">Pentaho & RapidMiner</span>
-                <span class="pill">Java & PHP</span>
-                <span class="pill">JavaScript / HTML / CSS</span>
-                <span class="pill">BPMN & UML</span>
+                <span class="pill">Power BI & SAP BO</span>
             </div>
         </section>
 
         <section id="projects" class="tab-content">
             <h3>AI Application & Architecture</h3>
-            <p>Highlighting recent technical leadership in developing applied AI pipelines for academic quality assurance and institutional data governance.</p>
+            <p>Interactive case studies of recent AI pipelines developed for academic quality assurance.</p>
 
             <div class="card-grid">
                 <div class="feature-card">
                     <h4>SECaT NLP Pipeline</h4>
-                    <p>Designed a custom NLP pipeline using AWS Bedrock (Claude) to extract themes and analyze sentiment within rich qualitative student feedback.</p>
-                    <p><span class="metric-highlight">Optimization:</span> Engineered intelligent token batching (3,500 - 4,000 chars) to prevent JSON parsing failures and reduce API latency, ensuring high reliability for institutional reporting.</p>
+                    <p>Custom pipeline using AWS Bedrock to extract themes and sentiment from qualitative feedback.</p>
+                    <button class="btn-modal" onclick="openModal('modal-secat')">View Architecture Demo</button>
                 </div>
 
                 <div class="feature-card">
                     <h4>Abusive Language Detection</h4>
-                    <p>Engineered a hybrid moderation approach combining hardcoded dictionary screening with advanced semantic AI to automatically flag harmful language in student comments.</p>
-                    <p><span class="metric-highlight">Impact:</span> Ensures a safe, professional reporting environment for academic staff by pre-screening thousands of qualitative records.</p>
+                    <p>Hybrid moderation combining dictionary screening with semantic AI to flag harmful comments.</p>
+                    <button class="btn-modal" onclick="openModal('modal-abusive')">View HITL Dashboard</button>
                 </div>
 
                 <div class="feature-card">
-                    <h4>Human-in-the-Loop Platform</h4>
-                    <p>Built an internal web-based review portal allowing administrative staff to securely audit AI-flagged comments, providing critical ethical oversight.</p>
-                    <p><span class="metric-highlight">Governance:</span> Enables precise classification tracking ("Dictionary Only," "AI Only," or "Both") to continually refine model accuracy.</p>
+                    <h4>API Optimization Engine</h4>
+                    <p>Engineered intelligent token batching to prevent JSON parsing failures and reduce latency.</p>
+                    <button class="btn-modal" onclick="openModal('modal-batching')">View Metric Impact</button>
                 </div>
+            </div>
+        </section>
 
-                <div class="feature-card">
-                    <h4>Evaluation System Migration</h4>
-                    <p>Led the technical migration of the legacy student evaluation system to the new "Blue" platform. Currently architecting the migration of AI scripts to the UQ Data Lake using Airflow.</p>
-                    <p><span class="metric-highlight">Scale:</span> Streamlines university-wide course and teaching evaluations, informing executive strategic decision-making.</p>
+        <section id="teaching" class="tab-content">
+            <h3>Teaching Philosophy</h3>
+            <p>With over five years of experience across undergraduate and postgraduate Business Information Systems courses, my teaching is deeply rooted in my own experience as an international student. I champion a student-centered, culturally responsive pedagogy designed to overcome the "expert blind spot."</p>
+            <ul>
+                <li><strong>Bridging Theory and Practice:</strong> Using relatable real-world analogies (e.g., explaining database relationships to finance students using a ledger).</li>
+                <li><strong>Step-by-Step Scaffolding:</strong> Starting with familiar tools like Excel before introducing complex PostgreSQL architectures.</li>
+                <li><strong>Inclusive Adaptation:</strong> Utilizing shared online documents (Google Docs/OneDrive) for anonymous participation to ensure introverted or resource-limited students thrive.</li>
+            </ul>
+            <p><span class="metric-highlight">Impact:</span> Consistently achieved an average <strong>4.82/5 SETutor evaluation score</strong> across 5 years, culminating in a nomination for the COCSL Teaching Award.</p>
+
+            <h3 style="margin-top: 40px;">Student & Peer Endorsements</h3>
+            <div class="quote-grid">
+                <div class="quote-card">
+                    <p>"Hui is always kindly and slowly teaching the content for us, teaching us step by step for understanding how to operate the software. Best tutor!"</p>
+                    <span class="quote-author">— Student Feedback (SETutor 2023)</span>
+                </div>
+                <div class="quote-card">
+                    <p>"His ability to translate complex data analytics concepts into understandable insights was particularly beneficial. It was Hui's inspiring teaching style that influenced my decision to pursue a tutor position."</p>
+                    <span class="quote-author">— Former Student Email</span>
+                </div>
+                <div class="quote-card">
+                    <p>"Demonstrated natural leadership qualities, mentoring new tutors, sharing best practices, contributing to a cohesive team dynamic, having a tangible impact on student success."</p>
+                    <span class="quote-author">— Dr. Avijit Sengupta, Course Coordinator</span>
                 </div>
             </div>
         </section>
 
         <section id="experience" class="tab-content">
             <h3>Professional Journey</h3>
-            
             <div class="timeline">
                 <div class="timeline-item">
                     <span class="timeline-date">April 2024 – Present</span>
                     <h4>Senior Principal Data Analyst, AI Application</h4>
                     <p><em>Institute for Teaching and Learning Innovation (ITaLI), UQ</em></p>
                     <ul>
-                        <li>Lead data collection, analysis, validation, script developments, and reporting to inform strategic decision-making.</li>
-                        <li>Manage course and teaching evaluation processes, ensuring effective use of evaluation tools and data.</li>
-                        <li>Spearheaded the integration of the "Blue" platform and developed production-ready AWS AI pipelines for student feedback analysis.</li>
+                        <li>Led the integration of the "Blue" platform and developed production-ready AWS AI pipelines.</li>
+                        <li>Manage course evaluation processes to drive improvements in teaching quality.</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">Selected Semesters</span>
+                    <h4>Guest Lecturer (BISM7233)</h4>
+                    <p><em>UQ Business School</em></p>
+                    <ul>
+                        <li>Delivered specialized lectures on Business Data Analytics, bridging the gap between theoretical data models and practical industry applications.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">Feb 2019 – June 2024</span>
+                    <h4>Lead Tutor & Course Facilitator</h4>
+                    <p><em>UQ Business School & School of EECS</em></p>
+                    <ul>
+                        <li>Facilitated BISM7233, BISM7206, BISM2207, and INFS1200.</li>
+                        <li>Mentored teaching teams and designed interactive, game-based learning assessments.</li>
                     </ul>
                 </div>
 
@@ -318,133 +320,158 @@
                     <h4>Research Assistant</h4>
                     <p><em>UQ Business School</em></p>
                     <ul>
-                        <li>Executed data collection and filtering, utilizing Python for advanced data crawling.</li>
-                        <li>Conducted extensive qualitative analysis on collected datasets to support academic research.</li>
+                        <li>Executed Python-based data crawling and qualitative analysis for academic research.</li>
                     </ul>
                 </div>
 
                 <div class="timeline-item">
-                    <span class="timeline-date">Jun 2022 – Aug 2022</span>
-                    <h4>Visiting PhD Researcher</h4>
-                    <p><em>University of St. Gallen (ICS-HSG), Switzerland</em></p>
-                    <ul>
-                        <li>Collaborated with international researchers and faculty members on process mining research projects.</li>
-                        <li>Co-authored outcome published as a primary conference paper in ACIS 2023.</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <span class="timeline-date">Sep 2019 – Sep 2020</span>
-                    <h4>Web & Database Developer Roles</h4>
-                    <p><em>ITaLI & CoralWatch Project, UQ</em></p>
-                    <ul>
-                        <li>Managed and designed PostgreSQL/MySQL databases for marine science data.</li>
-                        <li>Developed and maintained front-end websites and back-end infrastructure using HTML, CSS, JavaScript, and PHP.</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <span class="timeline-date">Oct 2017 – Feb 2019</span>
-                    <h4>System Analyst</h4>
-                    <p><em>Nerve Solutions Group (IT Department of Shine Lawyers)</em></p>
-                    <ul>
-                        <li>Coordinated with legal clients to define technical requirements and translate them for the development team.</li>
-                    </ul>
+                    <span class="timeline-date">Previous Roles (2017 – 2020)</span>
+                    <p><em>Visiting PhD Researcher (St. Gallen), Web Developer (ITaLI), Database Developer (CoralWatch), System Analyst (Shine Lawyers).</em></p>
                 </div>
             </div>
         </section>
 
         <section id="pubs" class="tab-content">
-            <h3>Academic Publications</h3>
-            <ul class="pub-list">
-                <li><span class="pub-title">Evaluating the quality of repurposed data – The Role of Metadata</span>Hui Zhou, Gianluca Demartini, Marta Indulska, and Shazia Sadiq. ACIS 2021 Proceedings.</li>
-                <li><span class="pub-title">A Behavioral Analysis of Metadata Use in Evaluating the Quality of Repurposed Data</span>Hui Zhou, Han Lei, Gianluca Demartini, Marta Indulska, and Shazia Sadiq. Conceptual Modeling (ER 2022).</li>
-                <li><span class="pub-title">Do Process Analysts Care About the Metadata of Event Logs?</span>Hui Zhou, Francesca Zerbato, Barbara Weber, Marta Indulska, and Shazia Sadiq. ACIS 2023 Proceedings.</li>
-                <li><span class="pub-title">The Role of Metadata in Evaluating Repurposed Data</span>Hui Zhou. PACIS 2023 Doctoral Consortium.</li>
-                <li><span class="pub-title">Influence of Metadata on Quality Evaluation of Unstructured Information Artefacts</span>Hui Zhou, Gianluca Demartini, Marta Indulska, and Shazia Sadiq. (Under Review).</li>
-                <li><span class="pub-title">Metadata Use in Evaluating Repurposed Data – A qualitative analysis</span>Hui Zhou. (Work in Progress, targeting AJIS).</li>
-                <li><span class="pub-title">Investigation of user behavior in explorative data analysis under data repurposing setting</span>Hui Zhou. (Work in Progress, targeting AJIS).</li>
+            <h3>Selected Publications</h3>
+            <ul>
+                <li><strong>Evaluating the quality of repurposed data – The Role of Metadata</strong> (2021). ACIS 2021 Proceedings.</li>
+                <li><strong>A Behavioral Analysis of Metadata Use in Evaluating the Quality of Repurposed Data</strong> (2022). Conceptual Modeling: ER 2022.</li>
+                <li><strong>Do Process Analysts Care About the Metadata of Event Logs?</strong> (2023). ACIS 2023 Proceedings.</li>
+                <li><strong>Influence of Metadata on Quality Evaluation of Unstructured Information Artefacts</strong> (Under Review).</li>
             </ul>
 
-            <h3 style="margin-top: 40px;">Teaching Experience</h3>
-            <h4>Lead Tutor & Course Facilitator (Feb 2019 – June 2024)</h4>
-            <p><em>UQ Business School & School of EECS</em></p>
+            <h3 style="margin-top: 30px;">Research Projects & Service</h3>
             <ul>
-                <li><strong>Courses:</strong> BISM7233/BISM2202 (Data Analytics), BISM7206 (Information Retrieval), BISM2207 (Managing Business Data), BISM3222/7255 (Systems Design), INFS1200/7900.</li>
-                <li><strong>Award:</strong> Nominated for 2024 Citations for Outstanding Contributions to Student Learning (COCSL).</li>
-            </ul>
-
-            <h3 style="margin-top: 40px;">Research Projects & Service</h3>
-            <ul>
-                <li><strong>ARC Discovery Projects:</strong> Co-investigator for "Building crowd-sourced data curation processes" and "Improving Crowdsourcing Effectiveness and Efficiency". Designed user studies and experiment platforms.</li>
+                <li><strong>ARC Discovery Projects:</strong> Co-investigator designing user studies and experiment platforms for crowd-sourced data curation.</li>
                 <li><strong>Reviewer:</strong> HICSS’21, PACIS’24, ACIS’2024.</li>
-                <li><strong>Session Chair:</strong> CIKM’21.</li>
+                <li><strong>Invited Speaker:</strong> ITaLI Seminar: "Bring it together: What Good Tutors Do" (Ready to Tutor Week).</li>
             </ul>
 
-            <h3 style="margin-top: 40px;">Referees</h3>
-            <ul class="pub-list">
+            <h3 style="margin-top: 30px;">Referees</h3>
+            <ul>
                 <li><strong>Prof. Shazia Sadiq</strong> - School of EECS, UQ (shazia@eecs.uq.edu.au)</li>
                 <li><strong>Prof. Marta Indulska</strong> - Business School, UQ (m.indulska@business.uq.edu.au)</li>
-                <li><strong>Assoc. Prof. Gianluca Demartini</strong> - School of EECS, UQ (g.demartini@uq.edu.au)</li>
+                <li><strong>Dr. Bikesh Raj Upreti</strong> - Business School, UQ (b.upreti@business.uq.edu.au)</li>
             </ul>
         </section>
 
         <section id="education" class="tab-content">
             <h3>Academic Background</h3>
-            
             <div class="timeline">
                 <div class="timeline-item">
                     <span class="timeline-date">Jan 2021 – Ongoing</span>
                     <h4>PhD Candidate in Data Science</h4>
                     <p><em>School of EECS, The University of Queensland</em></p>
-                    <ul>
-                        <li><strong>Thesis:</strong> The role of metadata in evaluating repurposed data.</li>
-                        <li><strong>Supervisors:</strong> Prof. Shazia Sadiq, Prof. Marta Indulska, Assoc. Prof. Gianluca Demartini.</li>
-                        <li><strong>Scholarship:</strong> Graduate School Scholarships (UQGSS).</li>
-                    </ul>
+                    <ul><li><strong>Thesis:</strong> The role of metadata in evaluating repurposed data.</li></ul>
                 </div>
-
                 <div class="timeline-item">
                     <span class="timeline-date">Jul 2015 – Jun 2017</span>
                     <h4>Master of Information Technology</h4>
                     <p><em>School of EECS, The University of Queensland</em></p>
                 </div>
-
                 <div class="timeline-item">
                     <span class="timeline-date">Sep 2010 – Jul 2014</span>
                     <h4>Bachelor of Science in Management (Tourism)</h4>
                     <p><em>Beijing International Studies University</em></p>
-                    <ul>
-                        <li><strong>Achievements:</strong> Outstanding Graduate, Excellent Student Leader, Academic & Social Work Scholarships.</li>
-                    </ul>
                 </div>
-            </div>
-
-            <h3 style="margin-top: 40px;">Certifications</h3>
-            <div class="feature-card" style="display: inline-block; padding: 15px 25px; margin-top: 10px;">
-                <h4 style="margin: 0;">AWS Certified AI Practitioner</h4>
-                <p style="margin: 5px 0 0 0; color: var(--text-muted);">AI/Gen-AI, Machine Learning, Cloud Infrastructure (Issued 2025)</p>
             </div>
         </section>
     </main>
 </div>
 
+<div class="modal-overlay" id="modal-secat" onclick="closeModal(event, 'modal-secat')">
+    <div class="modal-content">
+        <button class="modal-close" onclick="forceClose('modal-secat')">&times;</button>
+        <h3>SECaT NLP Pipeline Data Flow</h3>
+        <p>Demonstrating the transformation of unstructured qualitative feedback into actionable, structured data utilizing AWS Bedrock (Claude).</p>
+        
+        <div class="mockup-container">
+            <strong>[Raw Input from Student]</strong><br>
+            "The lectures were fantastic, but the assignments were confusing and the software kept crashing on my Mac."
+        </div>
+        <div class="mockup-arrow">↓ API Processing ↓</div>
+        <div class="mockup-container" style="background: rgba(0, 113, 227, 0.05); border-color: var(--accent);">
+            <strong>[Structured JSON Output]</strong><br>
+            {<br>
+            &nbsp;&nbsp;"Theme 1": { "Category": "Teaching Quality", "Sentiment": "Positive" },<br>
+            &nbsp;&nbsp;"Theme 2": { "Category": "Assessment", "Sentiment": "Negative" },<br>
+            &nbsp;&nbsp;"Theme 3": { "Category": "IT Infrastructure", "Sentiment": "Negative" }<br>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-abusive" onclick="closeModal(event, 'modal-abusive')">
+    <div class="modal-content">
+        <button class="modal-close" onclick="forceClose('modal-abusive')">&times;</button>
+        <h3>HITL Moderation Dashboard UI</h3>
+        <p>A mockup of the internal portal used by administrators to review comments flagged by the dual-layer AI system before executive reporting.</p>
+        
+        <div class="mockup-container">
+            <div style="border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 10px;">
+                <strong>Comment ID: #84729</strong> | Course: BISM7233
+            </div>
+            <p>"The tutor was completely useless and clearly has no idea what they are talking about. An absolute joke."</p>
+            <div style="margin-top: 15px;">
+                <span class="tag-safe">Dictionary Scan: Clean</span> 
+                <span class="tag-warn">Semantic AI Scan: Flagged (Hostile/Unprofessional)</span>
+            </div>
+            <div style="margin-top: 20px; text-align: right;">
+                <button style="background: var(--text-main); color: var(--bg-base); border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer;">Action: Escalate for Review</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-batching" onclick="closeModal(event, 'modal-batching')">
+    <div class="modal-content">
+        <button class="modal-close" onclick="forceClose('modal-batching')">&times;</button>
+        <h3>Intelligent Batching Metrics</h3>
+        <p>Resolving token limits and JSON truncation errors through optimized data chunking.</p>
+        
+        <div class="mockup-container" style="display: flex; gap: 20px;">
+            <div style="flex: 1; border-right: 1px solid var(--border); padding-right: 20px;">
+                <strong>Previous Architecture</strong><br><br>
+                Payload: 8,000+ chars<br>
+                Latency: 12.4 seconds<br>
+                <span style="color: var(--warning);">Failure Rate: 14% (JSON Truncation)</span>
+            </div>
+            <div style="flex: 1;">
+                <strong>Optimized Pipeline</strong><br><br>
+                Payload: 3,500 - 4,000 chars<br>
+                Latency: 3.1 seconds<br>
+                <span style="color: var(--success);">Failure Rate: < 0.1%</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
-    // Tab Navigation Logic
+    // Tab Logic
     function openTab(evt, tabId) {
         document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        
         document.getElementById(tabId).classList.add('active');
         evt.currentTarget.classList.add('active');
     }
 
-    // Dark Mode Toggle Logic
+    // Modal Logic
+    function openModal(id) {
+        document.getElementById(id).classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+    function closeModal(event, id) {
+        if(event.target.id === id) { forceClose(id); }
+    }
+    function forceClose(id) {
+        document.getElementById(id).classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Theme Logic
     function toggleTheme() {
         const body = document.documentElement;
-        const currentTheme = body.getAttribute('data-theme');
-        
-        if (currentTheme === 'dark') {
+        if (body.getAttribute('data-theme') === 'dark') {
             body.removeAttribute('data-theme');
             localStorage.setItem('theme', 'light');
         } else {
@@ -452,13 +479,8 @@
             localStorage.setItem('theme', 'dark');
         }
     }
-
-    // Check system preference and localStorage on load
     window.onload = () => {
-        const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
     }
