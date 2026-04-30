@@ -9,11 +9,11 @@
         :root {
             --bg-base: #F5F5F7;
             --bg-card: #FFFFFF;
-            --text-main: #1D1D1F;
-            --text-muted: #86868B;
+            --text-main: #1D1D1F; /* Pure black for primary text */
+            --text-muted: #5A5A5C; /* Darker grey for better contrast and readability */
             --accent: #0071E3; 
             --accent-bg: rgba(0, 113, 227, 0.1);
-            --border: rgba(0, 0, 0, 0.08);
+            --border: rgba(0, 0, 0, 0.12); /* Slightly darker border for crispness */
             --shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
             --glass-bg: rgba(255, 255, 255, 0.85);
             --success: #34C759;
@@ -25,10 +25,10 @@
             --bg-base: #000000;
             --bg-card: #1C1C1E;
             --text-main: #F5F5F7;
-            --text-muted: #A1A1A6;
+            --text-muted: #C1C1C4; /* Brighter grey for dark mode readability */
             --accent: #0A84FF;
             --accent-bg: rgba(10, 132, 255, 0.15);
-            --border: rgba(255, 255, 255, 0.1);
+            --border: rgba(255, 255, 255, 0.15);
             --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
             --glass-bg: rgba(28, 28, 30, 0.85);
         }
@@ -48,7 +48,14 @@
         a:hover { text-decoration: underline; }
 
         /* Layout - Mobile First */
-        .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
         
         /* Desktop Layout */
         @media (min-width: 900px) {
@@ -123,8 +130,11 @@
         /* Mobile-Responsive Modals (Popups) */
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 100; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s; padding: 15px; }
         .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content { background: var(--bg-card); width: 100%; max-width: 800px; border-radius: 20px; padding: 30px 20px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: translateY(20px); transition: transform 0.3s; max-height: 90vh; overflow-y: auto; }
+        
+        /* Adjusted max-width and max-height for better mobile tap-to-close behavior */
+        .modal-content { background: var(--bg-card); width: 100%; max-width: 750px; max-height: 85vh; border-radius: 20px; padding: 30px 20px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: translateY(20px); transition: transform 0.3s; overflow-y: auto; }
         @media (min-width: 768px) { .modal-content { padding: 40px; } }
+        
         .modal-overlay.active .modal-content { transform: translateY(0); }
         .modal-close { position: absolute; top: 15px; right: 15px; background: var(--bg-base); border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; color: var(--text-main); display: flex; align-items: center; justify-content: center;}
         
@@ -141,11 +151,15 @@
         .dash-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);}
         .dash-metric { font-size: 2.2rem; font-weight: bold; color: var(--text-main); line-height: 1; }
         .dash-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; margin-bottom: 10px; display: block;}
+
+        /* Code Block */
+        .code-block { background: #1e1e1e; color: #d4d4d4; font-family: monospace; padding: 15px; border-radius: 8px; font-size: 0.85rem; overflow-x: auto; margin-top: 10px;}
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- Sidebar -->
     <aside class="sidebar">
         <img src="profile.jpg" alt="Hui Zhou" class="profile-img">
         <h1>Hui Zhou</h1>
@@ -161,7 +175,9 @@
         <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
     </aside>
 
+    <!-- Main Content -->
     <main class="main-content">
+        <!-- Navigation -->
         <nav class="tab-bar">
             <button class="tab-btn active" onclick="openTab(event, 'summary')">Overview</button>
             <button class="tab-btn" onclick="openTab(event, 'projects')">AI Innovations</button>
@@ -171,17 +187,18 @@
             <button class="tab-btn" onclick="openTab(event, 'pubs')">Publications</button>
         </nav>
 
+        <!-- 1. Overview Tab -->
         <section id="summary" class="tab-content active">
             <h3>Executive Summary</h3>
             <p>I am a Senior Principal Data Analyst at the Institute for Teaching and Learning Innovation (ITaLI) at The University of Queensland, and a PhD Candidate in Data Science.</p>
-            <p>My professional strength lies in architecting large-scale data systems and deploying production-ready AI. I recently led the technical integration of UQ's new "Blue" evaluation system. I specialize in designing highly optimized NLP data pipelines, leveraging Large Language Models, automated cloud computing architectures, and intelligent data governance processes to extract actionable intelligence from hundreds of thousands of unstructured academic records.</p>
+            <p>My professional strength lies in architecting large-scale data systems and deploying production-ready AI. I recently led the technical integration of UQ's new "Blue" evaluation system. I specialize in designing highly optimized NLP data pipelines, leveraging Generative AI models (including Claude 3, Sonnet, and OpenAI models), automated S3 chunking, and intelligent ETL processes to extract actionable intelligence from hundreds of thousands of unstructured academic records.</p>
             <p>I bridge the gap between complex engineering infrastructure and strategic institutional governance, translating technical capabilities into tangible business outcomes that protect staff wellbeing, drive operational efficiency, and enhance university-wide teaching quality.</p>
 
             <h3 style="margin-top: 35px;">Technical Infrastructure & AI</h3>
             <div class="pill-container">
                 <span class="pill">AWS Bedrock & Sagemaker</span>
                 <span class="pill">AWS S3 & Batch Processing</span>
-                <span class="pill">Generative AI / LLMs</span>
+                <span class="pill">Gen-AI / LLMs (Claude, OpenAI)</span>
                 <span class="pill">Python (Pandas, NumPy)</span>
                 <span class="pill">NLP & Semantic Analysis</span>
             </div>
@@ -195,11 +212,13 @@
             </div>
         </section>
 
+        <!-- 2. AI Innovations Tab -->
         <section id="projects" class="tab-content">
             <h3>Strategic AI & Institutional Impact</h3>
             <p>Translating complex data pipelines into actionable operational intelligence. Below are executive case studies of enterprise-grade AI frameworks I developed to modernize UQ's academic quality assurance, enforce ethical data governance, and drive strategic decision-making.</p>
 
             <div class="card-grid">
+                <!-- Card 1 -->
                 <div class="feature-card">
                     <h4>Dictionary-AI Hybrid System for Abusive Language Detection</h4>
                     <p><strong>Innovation:</strong> Pioneering a paradigm shift in institutional risk management by architecting a multi-layered, context-aware NLP moderation engine that transcends traditional deterministic rules.</p>
@@ -207,6 +226,7 @@
                     <button class="btn-modal" onclick="openModal('modal-protect')">View Capabilities</button>
                 </div>
 
+                <!-- Card 2 -->
                 <div class="feature-card">
                     <h4>Secure Data Governance & Human-in-the-Loop Pipeline</h4>
                     <p><strong>Innovation:</strong> Engineered an end-to-end, resilient data workflow that operationalizes the ethical and responsible use of AI within a complex, university-level governance framework.</p>
@@ -214,6 +234,7 @@
                     <button class="btn-modal" onclick="openModal('modal-scale')">View Governance Workflow</button>
                 </div>
 
+                <!-- Card 3 -->
                 <div class="feature-card">
                     <h4>Executive Strategic Insights Dashboard</h4>
                     <p><strong>Innovation:</strong> Transformed fragmented, unstructured qualitative feedback into a unified, interactive strategic intelligence hub optimized for executive leadership.</p>
@@ -223,6 +244,7 @@
             </div>
         </section>
 
+        <!-- 3. Experience Tab -->
         <section id="experience" class="tab-content">
             <h3>Professional Journey</h3>
             <div class="timeline">
@@ -271,6 +293,7 @@
             </div>
         </section>
 
+        <!-- 4. Teaching Tab -->
         <section id="teaching" class="tab-content">
             <h3>Teaching Philosophy</h3>
             <p>With over five years of experience across undergraduate and postgraduate Business Information Systems courses, my teaching is deeply rooted in my own experience as an international student. I champion a student-centered pedagogy designed to overcome the "expert blind spot." By bridging complex data engineering theory with practical, real-world analogies, I empower diverse learners to succeed.</p>
@@ -301,29 +324,34 @@
             </div>
         </section>
 
+        <!-- 5. Awards Tab -->
         <section id="awards" class="tab-content">
             <h3>Awards & Certifications</h3>
             <p>Recognitions for excellence in technical innovation, academic research, and teaching performance.</p>
 
             <div class="awards-grid">
+                <!-- AWS Certification -->
                 <div class="award-card">
                     <img src="aws-badge.png" alt="AWS Certified AI Practitioner" class="award-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cG9seWdvbiBwb2ludHM9IjUwLDUgOTUsMjUgOTUsNzUgNTAsOTUgNSw3NSA1LDI1IiBmaWxsPSIjMjMyRjNFIi8+PHRleHQgeD0iNTAiIHk9IjUwIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFXUyBBSTwvdGV4dD48dGV4dCB4PSI1MCIgeT0iNjUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QcmFjdGl0aW9uZXI8L3RleHQ+PC9zdmc+'">
                     <h4>AWS Certified AI Practitioner</h4>
                     <p>AI/Gen-AI, Machine Learning (2025)</p>
                 </div>
                 
+                <!-- RTP Scholarship -->
                 <div class="award-card">
                     <div style="font-size: 3rem; margin-bottom: 10px;">🎓</div>
                     <h4>RTP Full Scholarship</h4>
                     <p>Australian Government Research Training Program (PhD)</p>
                 </div>
 
+                <!-- ITaLI Commendation -->
                 <div class="award-card">
                     <div style="font-size: 3rem; margin-bottom: 10px;">🌟</div>
                     <h4>ITaLI Individual Award</h4>
                     <p>Commendation for excellence in performance and positive contributions to culture</p>
                 </div>
 
+                <!-- COCSL -->
                 <div class="award-card">
                     <div style="font-size: 3rem; margin-bottom: 10px;">🏆</div>
                     <h4>COCSL Teaching Award</h4>
@@ -332,6 +360,7 @@
             </div>
         </section>
 
+        <!-- 6. Publications Tab -->
         <section id="pubs" class="tab-content">
             <h3>Academic Publications</h3>
             <ul>
@@ -347,6 +376,7 @@
     </main>
 </div>
 
+<!-- Modal 1: Duty of Care -->
 <div class="modal-overlay" id="modal-protect" onclick="closeModal(event, 'modal-protect')">
     <div class="modal-content">
         <button class="modal-close" onclick="forceClose('modal-protect')">&times;</button>
@@ -357,11 +387,12 @@
             <p>Universities rely on student feedback to drive excellence, but have a strict duty of care to protect academic staff from hostile defamation. Legacy screening methods relying on hard-coded banned words are critically blind to the complexities of modern language—failing entirely to detect passive-aggressive, discriminatory, or nuanced thematic abuse.</p>
             
             <div class="ppt-title" style="margin-top: 25px;">The Semantic AI Paradigm Shift</div>
-            <p>By migrating from vocabulary-matching to Large Language Model (LLM) semantic analysis, the system now comprehends the *intent* and *thematic context* of unstructured feedback.</p>
+            <p>By migrating from vocabulary-matching to advanced LLM semantic analysis, the system now comprehends the *intent* and *thematic context* of unstructured feedback.</p>
             
             <div class="ppt-title" style="margin-top: 25px;">Demonstrating Contextual AI Capabilities</div>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">*The following are synthetic examples designed to demonstrate the system's analytical logic without utilizing actual student data.</p>
             
+            <!-- Synthetic Example A -->
             <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
                 <p style="font-style: italic; color: var(--text-main);">"The tutor's teaching methods are a complete joke and they clearly lack the basic intelligence to be in a university setting."</p>
                 <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 5px;">
@@ -370,6 +401,7 @@
                 </div>
             </div>
 
+            <!-- Synthetic Example B -->
             <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 15px; border-radius: 8px;">
                 <p style="font-style: italic; color: var(--text-main);">"This entire course is a complete trainwreck and the coordinator should be fired immediately for gross incompetence."</p>
                 <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 5px;">
@@ -381,7 +413,7 @@
             <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 15px;">
                 <span style="font-weight: 600; font-size: 0.85rem;">Technical Stack:</span>
                 <span class="tech-pill">AWS Bedrock</span>
-                <span class="tech-pill">Claude 3 Haiku</span>
+                <span class="tech-pill">Gen-AI (Claude 3, OpenAI)</span>
                 <span class="tech-pill">Python NLP</span>
                 <span class="tech-pill">Regex Filtering</span>
             </div>
@@ -389,6 +421,7 @@
     </div>
 </div>
 
+<!-- Modal 2: Data Governance -->
 <div class="modal-overlay" id="modal-scale" onclick="closeModal(event, 'modal-scale')">
     <div class="modal-content">
         <button class="modal-close" onclick="forceClose('modal-scale')">&times;</button>
@@ -436,6 +469,7 @@
     </div>
 </div>
 
+<!-- Modal 3: Dashboards -->
 <div class="modal-overlay" id="modal-insights" onclick="closeModal(event, 'modal-insights')">
     <div class="modal-content">
         <button class="modal-close" onclick="forceClose('modal-insights')">&times;</button>
@@ -449,11 +483,13 @@
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">*Representative metrics illustrating the executive view of the SECaT Results & Insights Hub.</p>
             
             <div class="dash-grid">
+                <!-- KPI 1 -->
                 <div class="dash-card">
                     <span class="dash-label">Course SECaT Overall</span>
                     <span class="dash-metric" style="color: var(--accent);">4.21</span>
                     <span style="font-size: 0.8rem; color: var(--success);">▲ +0.15 from previous semester</span>
                 </div>
+                <!-- KPI 2 -->
                 <div class="dash-card">
                     <span class="dash-label">Institutional Response Rate</span>
                     <span class="dash-metric">38.4%</span>
