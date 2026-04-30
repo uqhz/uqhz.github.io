@@ -48,14 +48,7 @@
         a:hover { text-decoration: underline; }
 
         /* Layout - Mobile First */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; display: grid; grid-template-columns: 1fr; gap: 20px; }
         
         /* Desktop Layout */
         @media (min-width: 900px) {
@@ -97,6 +90,7 @@
         /* Pills & Tags */
         .pill-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; margin-bottom: 30px; }
         .pill { background: var(--accent-bg); color: var(--accent); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+        .tech-pill { background: rgba(0,0,0,0.05); color: var(--text-main); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-family: monospace; border: 1px solid var(--border); }
 
         /* Feature Cards */
         .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
@@ -141,16 +135,12 @@
         /* Workflow Arrows */
         .workflow-step { display: inline-block; padding: 12px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; font-weight: 600; color: var(--text-main); margin: 5px; text-align: center; font-size: 0.9rem;}
         .workflow-arrow { display: inline-block; color: var(--accent); font-size: 1.5rem; margin: 0 5px; vertical-align: middle; }
-        
-        /* Bar Chart */
-        .bar-chart-container { text-align: left; margin-top: 20px; background: var(--bg-card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);}
-        .bar-label { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 5px; font-weight: 600;}
-        .bar-track { width: 100%; background: rgba(0,0,0,0.05); border-radius: 10px; height: 16px; margin-bottom: 20px; overflow: hidden; }
-        .bar-fill-dict { width: 35%; background: var(--text-muted); height: 100%; border-radius: 10px; }
-        .bar-fill-ai { width: 100%; background: var(--accent); height: 100%; border-radius: 10px; }
 
-        /* Code Block */
-        .code-block { background: #1e1e1e; color: #d4d4d4; font-family: monospace; padding: 15px; border-radius: 8px; font-size: 0.85rem; overflow-x: auto; margin-top: 10px;}
+        /* Dashboard Mockup Grid */
+        .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .dash-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);}
+        .dash-metric { font-size: 2.2rem; font-weight: bold; color: var(--text-main); line-height: 1; }
+        .dash-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; margin-bottom: 10px; display: block;}
     </style>
 </head>
 <body>
@@ -184,8 +174,8 @@
         <section id="summary" class="tab-content active">
             <h3>Executive Summary</h3>
             <p>I am a Senior Principal Data Analyst at the Institute for Teaching and Learning Innovation (ITaLI) at The University of Queensland, and a PhD Candidate in Data Science.</p>
-            <p>My professional strength lies in architecting large-scale data systems and deploying production-ready AI. I recently led the technical integration of UQ's new "Blue" evaluation system. I specialize in designing highly optimized NLP data pipelines, leveraging AWS Bedrock (Claude 3), automated S3 chunking, and intelligent ETL processes to extract actionable intelligence from hundreds of thousands of unstructured academic records.</p>
-            <p>I bridge the gap between complex cloud infrastructure and strategic institutional governance, translating technical capabilities into tangible business outcomes that protect staff wellbeing and enhance teaching quality.</p>
+            <p>My professional strength lies in architecting large-scale data systems and deploying production-ready AI. I recently led the technical integration of UQ's new "Blue" evaluation system. I specialize in designing highly optimized NLP data pipelines, leveraging Large Language Models, automated cloud computing architectures, and intelligent data governance processes to extract actionable intelligence from hundreds of thousands of unstructured academic records.</p>
+            <p>I bridge the gap between complex engineering infrastructure and strategic institutional governance, translating technical capabilities into tangible business outcomes that protect staff wellbeing, drive operational efficiency, and enhance university-wide teaching quality.</p>
 
             <h3 style="margin-top: 35px;">Technical Infrastructure & AI</h3>
             <div class="pill-container">
@@ -200,35 +190,35 @@
             <div class="pill-container">
                 <span class="pill">SQL & PostgreSQL</span>
                 <span class="pill">Power BI & SAP Business Objects</span>
-                <span class="pill">ETL & Data Normalization</span>
+                <span class="pill">Data Normalization & Warehousing</span>
                 <span class="pill">BPMN & Conceptual Modelling</span>
             </div>
         </section>
 
         <section id="projects" class="tab-content">
-            <h3>AI Innovation & Strategic Impact</h3>
-            <p>Transforming unstructured qualitative data into actionable institutional intelligence. Below are case studies of enterprise-grade AI pipelines I developed to modernize UQ's academic quality assurance, scale our data processing capabilities, and uphold our duty of care to academic staff.</p>
+            <h3>Strategic AI & Institutional Impact</h3>
+            <p>Translating complex data pipelines into actionable operational intelligence. Below are executive case studies of enterprise-grade AI frameworks I developed to modernize UQ's academic quality assurance, enforce ethical data governance, and drive strategic decision-making.</p>
 
             <div class="card-grid">
                 <div class="feature-card">
                     <h4>Dictionary-AI Hybrid System for Abusive Language Detection</h4>
-                    <p><strong>Innovation:</strong> Merges deterministic dictionary rules with Claude 3 semantic analysis to create a dual-layer moderation engine.</p>
-                    <p><strong>Importance:</strong> Safeguards academic staff by successfully detecting hidden, nuanced abuse that static dictionaries completely miss, effectively upholding the institutional Duty of Care.</p>
-                    <button class="btn-modal" onclick="openModal('modal-protect')">View Duty of Care Impact</button>
+                    <p><strong>Innovation:</strong> Pioneering a paradigm shift in institutional risk management by architecting a multi-layered, context-aware NLP moderation engine that transcends traditional deterministic rules.</p>
+                    <p><strong>Business Value:</strong> Upholds the institutional Duty of Care by deploying advanced semantic analysis to proactively safeguard the psychological well-being of academic staff against complex, nuanced hostilities.</p>
+                    <button class="btn-modal" onclick="openModal('modal-protect')">View Capabilities</button>
                 </div>
 
                 <div class="feature-card">
-                    <h4>Large-Scale AWS Bedrock Batch Processing Architecture</h4>
-                    <p><strong>Innovation:</strong> Engineered intelligent token chunking and automated JSONL generation tailored specifically for the AWS Bedrock Batch API.</p>
-                    <p><strong>Importance:</strong> Allows the University to asynchronously process 348k+ records efficiently, drastically reducing computing costs and latency while achieving near 0% failure rates.</p>
-                    <button class="btn-modal" onclick="openModal('modal-scale')">View Architecture Flow</button>
+                    <h4>Secure Data Governance & Human-in-the-Loop Pipeline</h4>
+                    <p><strong>Innovation:</strong> Engineered an end-to-end, resilient data workflow that operationalizes the ethical and responsible use of AI within a complex, university-level governance framework.</p>
+                    <p><strong>Business Value:</strong> Ensures AI is used as a powerful pre-screening tool rather than an autonomous decision-maker, positioning human domain experts as the ultimate adjudicators to ensure absolute compliance and fairness.</p>
+                    <button class="btn-modal" onclick="openModal('modal-scale')">View Governance Workflow</button>
                 </div>
 
                 <div class="feature-card">
-                    <h4>Multi-Semester Dashboard Data ETL Engine</h4>
-                    <p><strong>Innovation:</strong> Automates the transformation of complex, nested AI output into zero-latency static JSON directories routed by Faculty, School, and Course codes.</p>
-                    <p><strong>Importance:</strong> Empowers University Executives with immediate, actionable insights, translating raw student feedback into strategic institutional accountability.</p>
-                    <button class="btn-modal" onclick="openModal('modal-insights')">View ETL Transformation</button>
+                    <h4>Executive Strategic Insights Dashboard</h4>
+                    <p><strong>Innovation:</strong> Transformed fragmented, unstructured qualitative feedback into a unified, interactive strategic intelligence hub optimized for executive leadership.</p>
+                    <p><strong>Business Value:</strong> Empowers university leadership to instantly visualize thematic trends, sentiment distributions, and core teaching metrics across faculties, driving evidence-based strategic improvements.</p>
+                    <button class="btn-modal" onclick="openModal('modal-insights')">View Dashboard Analytics</button>
                 </div>
             </div>
         </section>
@@ -360,31 +350,40 @@
 <div class="modal-overlay" id="modal-protect" onclick="closeModal(event, 'modal-protect')">
     <div class="modal-content">
         <button class="modal-close" onclick="forceClose('modal-protect')">&times;</button>
-        <h3>The Duty of Care: Protecting Staff Wellbeing at Scale</h3>
+        <h3>Contextual Intelligence vs. Static Rules</h3>
         
         <div class="ppt-graphic">
-            <div class="ppt-title">1. The Challenge (Legacy Limitations)</div>
-            <p>Institutions have a duty to protect academics from malicious feedback. However, legacy screening methods relying on static keyword dictionaries are critically inaccurate against modern linguistic complexities. They fail to identify passive-aggressive, discriminatory, or nuanced abuse. Furthermore, manually reviewing hundreds of thousands of comments imposes an unsustainable psychological burden on staff.</p>
+            <div class="ppt-title">The Institutional Challenge</div>
+            <p>Universities rely on student feedback to drive excellence, but have a strict duty of care to protect academic staff from hostile defamation. Legacy screening methods relying on hard-coded banned words are critically blind to the complexities of modern language—failing entirely to detect passive-aggressive, discriminatory, or nuanced thematic abuse.</p>
             
-            <div class="ppt-title" style="margin-top: 25px;">2. The Innovation (Dual-Scan & HITL)</div>
-            <p>We engineered a Proof of Concept (PoC) hybrid model that runs a baseline dictionary scan followed by a semantic analysis via AWS Bedrock (Claude 3). This is paired with a Human-in-the-Loop (HITL) workflow, meaning administrative staff only review pre-flagged anomalies rather than reading thousands of clean comments.</p>
+            <div class="ppt-title" style="margin-top: 25px;">The Semantic AI Paradigm Shift</div>
+            <p>By migrating from vocabulary-matching to Large Language Model (LLM) semantic analysis, the system now comprehends the *intent* and *thematic context* of unstructured feedback.</p>
             
-            <div class="ppt-title" style="margin-top: 25px;">3. Real Case Study Example</div>
-            <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 15px; border-radius: 8px; margin-top: 10px;">
-                <p style="font-style: italic; color: var(--text-main);">"The tutor is a high school teacher who spent every tutorial telling us how great he is... he is completely unqualified to teach... incapable of providing world class education."</p>
+            <div class="ppt-title" style="margin-top: 25px;">Demonstrating Contextual AI Capabilities</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">*The following are synthetic examples designed to demonstrate the system's analytical logic without utilizing actual student data.</p>
+            
+            <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                <p style="font-style: italic; color: var(--text-main);">"The tutor's teaching methods are a complete joke and they clearly lack the basic intelligence to be in a university setting."</p>
                 <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 5px;">
-                    <div><span style="display:inline-block; width: 180px; font-weight: 600;">Legacy Keyword Scan:</span> <span style="color: var(--success); font-weight: bold;">🟢 PASSED</span> <span style="font-size: 0.85rem; color: var(--text-muted);">(No explicit profanity)</span></div>
-                    <div><span style="display:inline-block; width: 180px; font-weight: 600;">AI Semantic Scan:</span> <span style="color: var(--danger); font-weight: bold;">🔴 FLAGGED</span> <span style="font-size: 0.85rem; color: var(--text-muted);">(Identified professional defamation & hostility)</span></div>
+                    <div><span style="display:inline-block; width: 180px; font-weight: 600;">Static Rule Dictionary:</span> <span style="color: var(--success); font-weight: bold;">🟢 PASSED</span> <span style="font-size: 0.85rem; color: var(--text-muted);">(No banned vocabulary detected)</span></div>
+                    <div><span style="display:inline-block; width: 180px; font-weight: 600;">AI Semantic Engine:</span> <span style="color: var(--danger); font-weight: bold;">🔴 FLAGGED</span> <span style="font-size: 0.85rem; color: var(--text-muted);">(Detected professional defamation & hostility)</span></div>
                 </div>
             </div>
 
-            <div class="ppt-title" style="margin-top: 25px;">4. The Institutional Impact</div>
-            <div class="bar-chart-container">
-                <p style="margin-bottom: 15px;">Screened over 348,000 comments in a single semester. The AI analysis identified numerous instances of severe abuse that the dictionary method completely missed, closing a critical gap in institutional risk management.</p>
-                <div class="bar-label"><span>Traditional Keyword Dictionary Catch Rate</span> <span>Limited</span></div>
-                <div class="bar-track"><div class="bar-fill-dict"></div></div>
-                <div class="bar-label"><span style="color: var(--accent);">AI Semantic Scanning Catch Rate</span> <span style="color: var(--accent);">Comprehensive</span></div>
-                <div class="bar-track"><div class="bar-fill-ai"></div></div>
+            <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 15px; border-radius: 8px;">
+                <p style="font-style: italic; color: var(--text-main);">"This entire course is a complete trainwreck and the coordinator should be fired immediately for gross incompetence."</p>
+                <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 5px;">
+                    <div><span style="display:inline-block; width: 180px; font-weight: 600;">Static Rule Dictionary:</span> <span style="color: var(--success); font-weight: bold;">🟢 PASSED</span></div>
+                    <div><span style="display:inline-block; width: 180px; font-weight: 600;">AI Semantic Engine:</span> <span style="color: var(--danger); font-weight: bold;">🔴 FLAGGED</span> <span style="font-size: 0.85rem; color: var(--text-muted);">(Detected malicious/punitive intent)</span></div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 15px;">
+                <span style="font-weight: 600; font-size: 0.85rem;">Technical Stack:</span>
+                <span class="tech-pill">AWS Bedrock</span>
+                <span class="tech-pill">Claude 3 Haiku</span>
+                <span class="tech-pill">Python NLP</span>
+                <span class="tech-pill">Regex Filtering</span>
             </div>
         </div>
     </div>
@@ -393,23 +392,45 @@
 <div class="modal-overlay" id="modal-scale" onclick="closeModal(event, 'modal-scale')">
     <div class="modal-content">
         <button class="modal-close" onclick="forceClose('modal-scale')">&times;</button>
-        <h3>Engineering for Scale: The 348k+ Challenge</h3>
+        <h3>Ethical AI & Secure Data Governance</h3>
         
         <div class="ppt-graphic">
-            <div class="ppt-title">1. The Engineering Bottleneck</div>
-            <p>Processing over 348,000 unstructured text records through an LLM via standard synchronous API calls results in massive latency, rate-limit throttling, and frequent JSON truncation errors when token limits are exceeded.</p>
+            <div class="ppt-title">1. The Ethical Mandate</div>
+            <p>Integrating AI into university-level operations requires absolute transparency and accountability. A core operational requirement is ensuring that Artificial Intelligence *never* makes autonomous disciplinary or redaction decisions regarding student feedback. The AI must serve as an amplifier of human capability, not a replacement for institutional judgment.</p>
             
-            <div class="ppt-title" style="margin-top: 25px;">2. The Pipeline Architecture</div>
-            <div style="text-align: center; margin-top: 20px;">
-                <div class="workflow-step">1. Raw Excel Normalization</div>
-                <div class="workflow-arrow">↓</div><br>
-                <div class="workflow-step">2. Intelligent Aggregation<br><span style="font-weight: normal; font-size: 0.8rem; color: var(--text-muted);">(Chunked to strict 3,500-char blocks)</span></div>
-                <div class="workflow-arrow">↓</div><br>
-                <div class="workflow-step">3. JSONL Formatting & S3 Upload</div>
-                <div class="workflow-arrow">↓</div><br>
-                <div class="workflow-step" style="border-color: var(--accent); color: var(--accent);">4. AWS Bedrock Asynchronous Batch Job<br><span style="font-weight: normal; font-size: 0.8rem;">(anthropic.claude-3-haiku)</span></div>
-                <div class="workflow-arrow">↓</div><br>
-                <div class="workflow-step" style="background: rgba(52, 199, 89, 0.1);">5. Automated Recovery & DataFrame Merge</div>
+            <div class="ppt-title" style="margin-top: 25px;">2. The Human-in-the-Loop (HITL) Workflow</div>
+            <p style="margin-bottom: 20px;">We engineered a highly resilient pipeline that positions human domain experts as the ultimate gatekeepers, ensuring all data governance protocols are strictly adhered to.</p>
+            
+            <div style="text-align: center; margin-top: 20px; padding: 20px; background: var(--bg-base); border-radius: 12px; border: 1px solid var(--border);">
+                <div class="workflow-step" style="width: 80%; margin-bottom: 15px;">
+                    <strong>Phase 1: Secure Data Aggregation</strong><br>
+                    <span style="font-size: 0.85rem; font-weight: normal;">Consolidation of unstructured records across all faculties.</span>
+                </div>
+                <div class="workflow-arrow" style="display: block; transform: rotate(90deg); margin: 5px auto;">→</div>
+                
+                <div class="workflow-step" style="width: 80%; margin-bottom: 15px; border-color: var(--accent); color: var(--accent);">
+                    <strong>Phase 2: High-Speed AI Semantic Pre-Screening</strong><br>
+                    <span style="font-size: 0.85rem; font-weight: normal;">Machine learning isolates the 1% of potentially problematic content, drastically reducing staff exposure to noise.</span>
+                </div>
+                <div class="workflow-arrow" style="display: block; transform: rotate(90deg); margin: 5px auto;">→</div>
+                
+                <div class="workflow-step" style="width: 80%; margin-bottom: 15px; background: rgba(255, 149, 0, 0.1);">
+                    <strong>Phase 3: The Gatekeeper (Human-in-the-Loop)</strong><br>
+                    <span style="font-size: 0.85rem; font-weight: normal;">Administrative experts review ONLY the AI-flagged anomalies via a secure dashboard.</span>
+                </div>
+                <div class="workflow-arrow" style="display: block; transform: rotate(90deg); margin: 5px auto;">→</div>
+                
+                <div class="workflow-step" style="width: 80%; background: rgba(52, 199, 89, 0.1);">
+                    <strong>Phase 4: Final Institutional Adjudication</strong><br>
+                    <span style="font-size: 0.85rem; font-weight: normal;">Ethical redaction and reporting executed under full human authority.</span>
+                </div>
+            </div>
+
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 15px;">
+                <span style="font-weight: 600; font-size: 0.85rem;">Technical Stack:</span>
+                <span class="tech-pill">AWS S3 Orchestration</span>
+                <span class="tech-pill">Asynchronous Batch Processing</span>
+                <span class="tech-pill">Fault-Tolerant Python Architecture</span>
             </div>
         </div>
     </div>
@@ -418,37 +439,65 @@
 <div class="modal-overlay" id="modal-insights" onclick="closeModal(event, 'modal-insights')">
     <div class="modal-content">
         <button class="modal-close" onclick="forceClose('modal-insights')">&times;</button>
-        <h3>From Unstructured Text to Executive Intelligence</h3>
+        <h3>Executive Strategic Insights Dashboard</h3>
         
         <div class="ppt-graphic">
-            <div class="ppt-title">1. The Strategic Value</div>
-            <p>Raw qualitative comments are incredibly difficult to analyze at an institutional level. While the AI successfully tags comments with Themes and Sentiment, that data remains locked in complex nested arrays. Executives need immediate, high-level visibility to drive teaching improvements.</p>
+            <div class="ppt-title">Empowering Evidence-Based Strategy</div>
+            <p>Raw qualitative comments are traditionally siloed and difficult to analyze at scale. This project successfully translated hundreds of thousands of unstructured records into a unified, interactive visual dashboard. It empowers university executives to instantly identify systemic friction points in course structures and celebrate teaching excellence in real-time.</p>
             
-            <div class="ppt-title" style="margin-top: 25px;">2. Data Transformation (ETL Process)</div>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">Before (The Bottleneck): Massive multi-gigabyte files containing deeply nested arrays.</p>
-            <div class="code-block">
-[
-  {
-    "Comment": "Great course, bad room.", 
-    "Themes": [{"category": "Teaching", "score": 1}, {"category": "Facilities", "score": -1}] 
-  }
-]
-            </div>
+            <div class="ppt-title" style="margin-top: 25px;">Operational Intelligence (Visual Mockup)</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">*Representative metrics illustrating the executive view of the SECaT Results & Insights Hub.</p>
             
-            <div style="text-align: center; color: var(--accent); font-weight: bold; margin: 15px 0;">↓ ETL Explode & Normalize ↓</div>
-            
-            <p style="font-size: 0.9rem; color: var(--text-muted);">After (The Output): Lightweight, pre-calculated static files routed by institution level.</p>
-            <div class="code-block" style="background: rgba(0, 113, 227, 0.05); color: var(--text-main); border: 1px solid var(--accent);">
-📁 dashboard_data/
- ├── 📄 summary-stats_2026.json
- ├── 📁 courses/
- │    └── 📄 BISM7233_insights.json
- └── 📁 schools/
-      └── 📄 EECS_aggregated.json
+            <div class="dash-grid">
+                <div class="dash-card">
+                    <span class="dash-label">Course SECaT Overall</span>
+                    <span class="dash-metric" style="color: var(--accent);">4.21</span>
+                    <span style="font-size: 0.8rem; color: var(--success);">▲ +0.15 from previous semester</span>
+                </div>
+                <div class="dash-card">
+                    <span class="dash-label">Institutional Response Rate</span>
+                    <span class="dash-metric">38.4%</span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Across 14,000+ targeted students</span>
+                </div>
             </div>
 
-            <div class="ppt-title" style="margin-top: 25px;">3. Institutional Impact</div>
-            <p>By decoupling the heavy data processing from the frontend dashboard, we created a zero-latency experience for University Executives to instantly view metrics like "84% Positive Sentiment in Teaching" vs "12% Structural Concerns" at a glance.</p>
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 15px; margin-top: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+                <span class="dash-label">Thematic Sentiment Distribution</span>
+                
+                <div style="margin-top: 15px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 5px; font-weight: 500;">
+                        <span>Learning Materials</span> <span>82% Positive</span>
+                    </div>
+                    <div style="width: 100%; background: #eee; height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div style="width: 82%; background: var(--success); height: 100%;"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 5px; font-weight: 500;">
+                        <span>Course Structure</span> <span>64% Positive</span>
+                    </div>
+                    <div style="width: 100%; background: #eee; height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div style="width: 64%; background: var(--warning); height: 100%;"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 5px; font-weight: 500;">
+                        <span>Assessments & Workload</span> <span>45% Positive</span>
+                    </div>
+                    <div style="width: 100%; background: #eee; height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div style="width: 45%; background: var(--danger); height: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 15px;">
+                <span style="font-weight: 600; font-size: 0.85rem;">Technical Stack:</span>
+                <span class="tech-pill">Python Data Normalization</span>
+                <span class="tech-pill">Pre-calculated Data Cubes</span>
+                <span class="tech-pill">Interactive BI Deployment</span>
+            </div>
         </div>
     </div>
 </div>
